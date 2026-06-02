@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KARYA - Login &amp; Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb2bf",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#ff688e",
+                    "inverse-primary": "#b6c4ff",
+                    "outline-variant": "#c3c6d1",
+                    "on-secondary-fixed": "#271900",
+                    "secondary-fixed": "#ffdea8",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#ffba20",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#6c002a",
+                    "primary-fixed": "#dce1ff",
+                    "tertiary": "#450018",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#093cab",
+                    "surface": "#fcf9f8",
+                    "surface-tint": "#3056c4",
+                    "on-surface-variant": "#43474f",
+                    "secondary-container": "#feb700",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "surface-dim": "#dcd9d9",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#f0eded",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fcf9f8",
+                    "surface-variant": "#e5e2e1",
+                    "primary": "#001855",
+                    "outline": "#737780",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary-fixed-variant": "#90003b",
+                    "on-secondary-container": "#6b4b00",
+                    "on-tertiary-fixed": "#3f0016",
+                    "on-background": "#1b1c1c",
+                    "secondary": "#7c5800",
+                    "tertiary-fixed": "#ffd9de",
+                    "primary-container": "#002a84",
+                    "on-primary-container": "#7796ff",
+                    "on-primary-fixed": "#00164f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Lexend"],
+                    "body": ["Lexend"],
+                    "label": ["Lexend"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-gradient {
+            background: linear-gradient(135deg, #001855 0%, #002a84 100%);
+        }
+        .glass-panel {
+            background: rgba(252, 249, 248, 0.8);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopNavBar (Suppressed for focused login task, but using logic from system for brand alignment) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-primary tracking-tighter font-headline">KARYA</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-high text-primary font-semibold transition-transform hover:scale-105 focus:ring-3 focus:ring-secondary-container outline-none">
+<span class="material-symbols-outlined" data-icon="accessibility_new">accessibility_new</span>
+<span class="text-sm">Accessibility Settings</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6 pt-24 pb-12">
+<div class="grid lg:grid-cols-12 w-full max-w-6xl gap-0 overflow-hidden rounded-[2rem] shadow-[0_12px_40px_rgba(0,22,79,0.08)] bg-surface-container-lowest">
+<!-- Left Side: Visual/Branding Panel (Asymmetric Editorial Style) -->
+<div class="hidden lg:flex lg:col-span-5 editorial-gradient p-12 flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<h1 class="text-display-lg text-primary-fixed font-headline font-extrabold tracking-tighter leading-none mb-6">
+                        Empowering <br/>Ability.
+                    </h1>
+<p class="text-on-primary-container text-lg font-medium max-w-xs opacity-90">
+                        Join the community where neurodiversity and accessibility drive the future of work.
+                    </p>
+</div>
+<div class="relative z-10 flex flex-col gap-8">
+<div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/5">
+<div class="flex gap-2 mb-4">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-white/20"></span>
+<span class="w-3 h-3 rounded-full bg-white/20"></span>
+</div>
+<p class="text-white font-medium italic">"Karya helped me find a workspace that actually understands my sensory needs. It changed my career."</p>
+<p class="text-primary-fixed text-sm mt-3 font-bold uppercase tracking-widest">— Community Member</p>
+</div>
+</div>
+<!-- Abstract Decorative Element -->
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-secondary opacity-20 rounded-full blur-[80px]"></div>
+<div class="absolute top-1/2 -left-20 w-60 h-60 bg-primary-container opacity-40 rounded-full blur-[100px]"></div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="lg:col-span-7 p-8 md:p-16 flex flex-col justify-center bg-surface-container-lowest">
+<div class="max-w-md mx-auto w-full">
+<div class="mb-10">
+<h2 class="text-4xl font-headline font-black text-on-surface tracking-tight mb-2">Welcome Back</h2>
+<p class="text-on-surface-variant font-medium">Log in to your professional sanctuary.</p>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 border-none group focus:ring-3 focus:ring-secondary-container outline-none">
+<img alt="" class="w-6 h-6" data-alt="minimalist colorful google logo icon on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7hs6cRh5Q1xGbQ-s2FVdazUq3Bn9BRXYezX0Wfme5ELSrV9ZaS14P4xuoVMaWR2wqSSTd8mMAK9MyFkJNQ1yYF8UTfDQNng6_toIkiWpg0h2CNqATpHQo6mqPUvfJ1wfqqP-zEtCBbyyF4B5a5MI4Wf8lxtLzjf7bJ9otZrR4M0eYuZBjFrYRv2W3xol-KbkZPNaxCmojHLFwD48u246LAF7vj3faIidbZ0mj_SSq5S7KYUWIsfYi0FznI7AIYzray9RT2tTddg"/>
+<span class="font-bold text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-4 px-6 rounded-xl bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 border-none group focus:ring-3 focus:ring-secondary-container outline-none">
+<span class="material-symbols-outlined text-2xl text-on-surface" data-icon="work">work</span>
+<span class="font-bold text-on-surface">LinkedIn</span>
+</button>
+</div>
+<div class="relative flex items-center py-6">
+<div class="flex-grow border-t-2 border-surface-container-high"></div>
+<span class="flex-shrink mx-4 text-sm font-label font-bold text-outline-variant tracking-widest uppercase">Or email</span>
+<div class="flex-grow border-t-2 border-surface-container-high"></div>
+</div>
+<!-- Traditional Login Form -->
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-label font-bold text-on-surface tracking-wider uppercase mb-2">Email Address</label>
+<input class="w-full px-6 py-5 rounded-xl bg-surface-container-high border-none focus:bg-surface-lowest focus:ring-0 focus:border-b-2 focus:border-primary text-lg font-medium transition-all outline-none" placeholder="name@company.com" type="email"/>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<label class="block text-sm font-label font-bold text-on-surface tracking-wider uppercase">Password</label>
+<a class="text-sm font-bold text-primary hover:underline" href="#">Forgot?</a>
+</div>
+<input class="w-full px-6 py-5 rounded-xl bg-surface-container-high border-none focus:bg-surface-lowest focus:ring-0 focus:border-b-2 focus:border-primary text-lg font-medium transition-all outline-none" placeholder="••••••••" type="password"/>
+</div>
+<div class="pt-4">
+<button class="w-full py-5 px-8 editorial-gradient text-white rounded-xl font-headline font-bold text-xl shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] focus:ring-3 focus:ring-secondary-container outline-none" type="submit">
+                                Sign In
+                            </button>
+</div>
+</form>
+<div class="mt-10 text-center">
+<p class="text-on-surface-variant font-medium">
+                            Don't have an account? 
+                            <a class="text-primary font-black hover:underline ml-1" href="#">Create Account</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-surface-container-low mt-auto">
+<div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex gap-8">
+<a class="text-sm font-label font-semibold text-slate-500 hover:text-primary transition-colors tracking-wide uppercase" href="#">Accessibility Statement</a>
+<a class="text-sm font-label font-semibold text-slate-500 hover:text-primary transition-colors tracking-wide uppercase" href="#">Community Forum</a>
+<a class="text-sm font-label font-semibold text-slate-500 hover:text-primary transition-colors tracking-wide uppercase" href="#">Legal</a>
+</div>
+<p class="text-sm font-label font-semibold text-primary uppercase tracking-wide">© 2024 KARYA. Empowering Ability.</p>
+</div>
+</footer>
+<!-- Fixed Floating Accessibility Panel Prompt (Decorative interaction clue) -->
+<div class="fixed bottom-8 left-8 hidden md:block">
+<div class="bg-primary text-white p-4 rounded-2xl shadow-xl flex items-center gap-4 max-w-xs border border-white/10">
+<div class="bg-secondary-container text-on-secondary-container p-2 rounded-xl">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</div>
+<div>
+<p class="text-sm font-bold leading-tight">High Contrast Mode available.</p>
+<p class="text-xs opacity-70">Adjust settings before you log in.</p>
+</div>
+</div>
+</div>
+</body></html>

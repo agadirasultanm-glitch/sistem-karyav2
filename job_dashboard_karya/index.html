@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KARYA | Dashboard Lowongan Memberdayakan Disabilitas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb2bf",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#ff688e",
+                    "inverse-primary": "#b6c4ff",
+                    "outline-variant": "#c3c6d1",
+                    "on-secondary-fixed": "#271900",
+                    "secondary-fixed": "#ffdea8",
+                    "inverse-surface": "#303030",
+                    "secondary-fixed-dim": "#ffba20",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#6c002a",
+                    "primary-fixed": "#dce1ff",
+                    "tertiary": "#450018",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#093cab",
+                    "surface": "#fcf9f8",
+                    "surface-tint": "#3056c4",
+                    "on-surface-variant": "#43474f",
+                    "secondary-container": "#feb700",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-fixed-dim": "#b6c4ff",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "surface-dim": "#dcd9d9",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#f0eded",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fcf9f8",
+                    "surface-variant": "#e5e2e1",
+                    "primary": "#001855",
+                    "outline": "#737780",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary-fixed-variant": "#90003b",
+                    "on-secondary-container": "#6b4b00",
+                    "on-tertiary-fixed": "#3f0016",
+                    "on-background": "#1b1c1c",
+                    "secondary": "#7c5800",
+                    "tertiary-fixed": "#ffd9de",
+                    "primary-container": "#002a84",
+                    "on-primary-container": "#7796ff",
+                    "on-primary-fixed": "#00164f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Lexend"],
+                    "body": ["Lexend"],
+                    "label": ["Lexend"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Lexend', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-blue-900 dark:text-blue-50 tracking-tighter font-['Lexend']">KARYA</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900 dark:text-blue-100 border-b-4 border-amber-500 pb-1 font-['Lexend'] font-bold tracking-tight" href="#">Lowongan</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-transform duration-200 hover:scale-105" href="#">Komunitas</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-transform duration-200 hover:scale-105" href="#">Sumber Daya</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-blue-900 dark:text-blue-100 transition-transform duration-200 hover:scale-105 focus:ring-3 focus:ring-amber-400 focus:outline-none focus:ring-offset-2">
+<span class="material-symbols-outlined" data-icon="contrast">contrast</span>
+</button>
+<button class="p-2 text-blue-900 dark:text-blue-100 transition-transform duration-200 hover:scale-105 focus:ring-3 focus:ring-amber-400 focus:outline-none focus:ring-offset-2">
+<span class="material-symbols-outlined" data-icon="format_size">format_size</span>
+</button>
+<button class="p-2 text-blue-900 dark:text-blue-100 transition-transform duration-200 hover:scale-105 focus:ring-3 focus:ring-amber-400 focus:outline-none focus:ring-offset-2">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Sidebar Wrapper -->
+<aside class="h-full w-72 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 hidden lg:flex flex-col py-24 gap-4 z-40">
+<div class="px-8 mb-6">
+<h2 class="text-blue-900 dark:text-blue-100 font-black text-xl tracking-tight">Selamat datang</h2>
+<p class="text-slate-500 text-sm">Anggota Komunitas Karya</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="bg-blue-900 text-white rounded-xl shadow-lg px-4 py-3 mx-4 flex items-center gap-3 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="font-['Lexend']">Cari Lowongan</span>
+</a>
+<a class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-4 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-['Lexend']">Lamaran Saya</span>
+</a>
+<a class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-4 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="accessibility_new">accessibility_new</span>
+<span class="font-['Lexend']">Pengaturan Aksesibilitas</span>
+</a>
+<a class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-4 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-['Lexend']">Bantuan</span>
+</a>
+<div class="mt-8 px-8">
+<label class="text-[10px] uppercase tracking-[0.15em] font-bold text-slate-400 mb-4 block">Kategori</label>
+<ul class="space-y-4">
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2" href="#"><span class="w-2 h-2 rounded-full bg-secondary"></span> IT &amp; Teknologi</a></li>
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2" href="#"><span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span> Layanan Pelanggan</a></li>
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2" href="#"><span class="w-2 h-2 rounded-full bg-on-primary-container"></span> Desain</a></li>
+</ul>
+</div>
+<a class="mt-auto text-slate-700 dark:text-slate-300 px-4 py-3 mx-4 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-['Lexend']">Keluar</span>
+</a>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:pl-72 pt-24 pb-12 px-6 lg:px-12 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Hero Header & Search -->
+<header class="mb-12">
+<h1 class="text-5xl lg:text-6xl font-black text-on-surface tracking-tighter mb-4 leading-tight">
+                    Temukan peluang <br/><span class="text-primary-container">tanpa batas berikutnya.</span>
+</h1>
+<div class="bg-surface-container-high p-4 rounded-3xl mt-8 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+<div class="md:col-span-8 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-2xl border-none bg-surface-container-lowest focus:ring-3 focus:ring-secondary-container text-lg" placeholder="Judul pekerjaan, kata kunci, atau perusahaan" type="text"/>
+</div>
+<button class="md:col-span-4 bg-primary text-on-primary px-8 py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                            Cari Lowongan
+                        </button>
+</div>
+</div>
+<!-- Specialized Filters -->
+<div class="flex flex-wrap gap-3 mt-6">
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-on-primary font-semibold transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="accessible_forward">accessible_forward</span>
+                        Akses Kursi Roda
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold hover:bg-secondary-container hover:text-on-secondary-container transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="sign_language">sign_language</span>
+                        Bahasa Isyarat
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold hover:bg-secondary-container hover:text-on-secondary-container transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="home_work">home_work</span>
+                        Kerja Remote
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold hover:bg-secondary-container hover:text-on-secondary-container transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="add">add</span>
+                        Filter Lainnya
+                    </button>
+</div>
+</header>
+<!-- Jobs Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Job Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,22,79,0.04)] border-b-4 border-transparent hover:border-secondary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+<img alt="Logo Perusahaan" class="w-full h-full object-cover" data-alt="logo perusahaan teknologi minimalis bersih di latar belakang putih dengan aksen biru cerah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZuHRaJi3kyKey7T6LMBCSRFox9xz36uyAAwrW7xSf-aIyLLobKRCZOPW-IPHUHanKBYZTal8VMCIahm5EdM2F0UG720CZT3tdWRYrAXAkpD1TnU7R--g0L277OifijX_BENXYexDRyfKVVVPQRuN1Uy1LX5O5xH4h6J2pTaHzG9nk4Fl8TokSTuV6xcP1Ljh35Xl5FomHnUbB-1wetBV8J7vWMyIMbDnLN2Tm2dtW41vubHu8WXK8QDgDIHECvz2AaMSQ49OaLyA"/>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Penuh Waktu</span>
+</div>
+<h3 class="text-2xl font-black text-on-surface mb-2 group-hover:text-primary transition-colors">Senior UX Designer</h3>
+<div class="flex items-center gap-2 text-outline mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="apartment">apartment</span>
+<span class="font-medium">Stellar Systems</span>
+<span class="mx-2">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-medium">London / Remote</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="accessible">accessible</span>
+                            Akses Tanpa Tangga
+                        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+                            Optimasi Pembaca Layar
+                        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                            Terverifikasi Inklusif
+                        </span>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-surface-container">
+<span class="text-xl font-bold text-primary">$85rb - $110rb</span>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-xl font-bold hover:scale-105 transition-transform">Lihat Detail</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,22,79,0.04)] border-b-4 border-transparent hover:border-secondary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+<img alt="Logo Perusahaan" class="w-full h-full object-cover" data-alt="logo korporat abstrak modern dengan bentuk geometris dalam nuansa oranye dan cokelat hangat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfuY8W-3o_XbO7L1qmcAUinuBN2pVO_27S9KVH3jkRGrRuae9mYE69sqhOsCmujjoZLv7QWg1AhYR-U1g1gUnWPPBSp0M2Ip9Rbzhv6s66Lf3-CkRBhcKyiAtaJTiEETYEOMOj2GIVoLvg3kKnDLcIT-B_BMAQON2KbvQXpcBbpk6Hdca5RpUS3uByh6s2DJYM42kFmqWNbSihy26UYXMiF8ZTt30HbspI39EALhZaMZgAVWOrvedZZLdklGSKVoXLY-rgeONa2o"/>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Paruh Waktu</span>
+</div>
+<h3 class="text-2xl font-black text-on-surface mb-2 group-hover:text-primary transition-colors">Customer Success Lead</h3>
+<div class="flex items-center gap-2 text-outline mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="apartment">apartment</span>
+<span class="font-medium">Harmony Hub</span>
+<span class="mx-2">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-medium">Manchester</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="sign_language">sign_language</span>
+                            Tersedia Bahasa Isyarat
+                        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="psychology">psychology</span>
+                            Ramah Neurodiverse
+                        </span>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-surface-container">
+<span class="text-xl font-bold text-primary">$45rb - $55rb</span>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-xl font-bold hover:scale-105 transition-transform">Lihat Detail</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,22,79,0.04)] border-b-4 border-transparent hover:border-secondary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+<img alt="Logo Perusahaan" class="w-full h-full object-cover" data-alt="logo tipografi minimalis untuk merek kesehatan dan kebugaran dengan latar belakang hijau lembut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl9iru7zhuJD8a1EqytMTz5eFnM0tmr3aYbW0Zf31P5NHpdWErs-zoTC3KAyxJNitpxo7goj-xUSaRORrgtC2zV0DFWC99-FLkp0G_G-3FJWHUpgVPqhJWug5hgz8rqlntGTKPX2-NJiAhSZ6X4TX3VzvQo22QieB8AALfYYUQBXPmQEDdxc9Mt_O0t5sODc8Pcppt3A7ozD_a2bdxhKlC528MbmIda_Lr4pbA6ZjZmM8tS1mCqjCd8tBUQJzUcI6w9XGrpHjehY8"/>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Kontrak</span>
+</div>
+<h3 class="text-2xl font-black text-on-surface mb-2 group-hover:text-primary transition-colors">Konsultan Aksesibilitas</h3>
+<div class="flex items-center gap-2 text-outline mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="apartment">apartment</span>
+<span class="font-medium">Access Global</span>
+<span class="mx-2">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-medium">Remote</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="home_work">home_work</span>
+                            Sepenuhnya Remote
+                        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="schedule">schedule</span>
+                            Jam Kerja Fleksibel
+                        </span>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-surface-container">
+<span class="text-xl font-bold text-primary">$600 / hari</span>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-xl font-bold hover:scale-105 transition-transform">Lihat Detail</button>
+</div>
+</div>
+<!-- Job Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_12px_40px_rgba(0,22,79,0.04)] border-b-4 border-transparent hover:border-secondary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 flex items-center justify-center">
+<img alt="Logo Perusahaan" class="w-full h-full object-cover" data-alt="logo agen kreatif yang menampilkan pola geometris berani dan warna primer yang cerah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdg7qfrcW44gBa_jDz4lY7DsS2KaiBRqwj2r3okGAgCuc1p_3MPI82vGJv64vunb-_uD2dExpQ7bxx5k2FYJUik2q19wSdj76f08EaDjupp3-dFyca0UJKDo3XaRMUugX_a25O2gf6rtaFPPPEdKz74CrGp89PAvVNNjvi9MsNMWDueGxq8xI6EpUQ8iS4SxzDXBynEVEdTbS7wkQGBFqTh9_TkRdoIA2boTX1i9QrLANRAcs4JDxNbRLsnACCK-LI_NEz7rw6kN8"/>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">Penuh Waktu</span>
+</div>
+<h3 class="text-2xl font-black text-on-surface mb-2 group-hover:text-primary transition-colors">Frontend Developer</h3>
+<div class="flex items-center gap-2 text-outline mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="apartment">apartment</span>
+<span class="font-medium">Pixel Perfect</span>
+<span class="mx-2">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-medium">Brighton</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="accessible_forward">accessible_forward</span>
+                            Ramah Kursi Roda
+                        </span>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-surface-container text-on-surface-variant rounded-lg text-xs font-bold">
+<span class="material-symbols-outlined text-base" data-icon="hearing">hearing</span>
+                            Alat Bantu Dengar
+                        </span>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-surface-container">
+<span class="text-xl font-bold text-primary">$70rb - $90rb</span>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-xl font-bold hover:scale-105 transition-transform">Lihat Detail</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="lg:pl-72 bg-slate-50 dark:bg-slate-950 w-full py-12 px-8">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-2">
+<p class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-blue-900 dark:text-blue-100">© 2024 KARYA. Memberdayakan Kemampuan.</p>
+<p class="text-slate-500 text-xs">Platform yang didedikasikan untuk pertumbuhan karier inklusif.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 transition-opacity hover:opacity-80" href="#">Pernyataan Aksesibilitas</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 transition-opacity hover:opacity-80" href="#">Forum Komunitas</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 transition-opacity hover:opacity-80" href="#">Legal</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 transition-opacity hover:opacity-80" href="#">Kebijakan Privasi</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation (Bottom Bar) -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-surface-container-high px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="work" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Lowongan</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Aplikasi</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="accessibility_new">accessibility_new</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Pengaturan</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profil</span>
+</button>
+</div>
+</body></html>

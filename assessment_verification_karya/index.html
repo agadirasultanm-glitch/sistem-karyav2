@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KARYA | Penilaian Karier &amp; Verifikasi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb2bf",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ff688e",
+                        "inverse-primary": "#b6c4ff",
+                        "outline-variant": "#c3c6d1",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-fixed": "#ffdea8",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed-dim": "#ffba20",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-container": "#6c002a",
+                        "primary-fixed": "#dce1ff",
+                        "tertiary": "#450018",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface": "#1b1c1c",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#093cab",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#3056c4",
+                        "on-surface-variant": "#43474f",
+                        "secondary-container": "#feb700",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "surface-dim": "#dcd9d9",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fcf9f8",
+                        "surface-variant": "#e5e2e1",
+                        "primary": "#001855",
+                        "outline": "#737780",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-fixed-variant": "#90003b",
+                        "on-secondary-container": "#6b4b00",
+                        "on-tertiary-fixed": "#3f0016",
+                        "on-background": "#1b1c1c",
+                        "secondary": "#7c5800",
+                        "tertiary-fixed": "#ffd9de",
+                        "primary-container": "#002a84",
+                        "on-primary-container": "#7796ff",
+                        "on-primary-fixed": "#00164f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Lexend"],
+                        "label": ["Lexend"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #fcf9f8;
+            color: #1b1c1c;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen">
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-blue-900 dark:text-blue-50 tracking-tighter font-['Lexend']">KARYA</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200 font-['Lexend']" href="#">Pekerjaan</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200 font-['Lexend']" href="#">Komunitas</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200 font-['Lexend']" href="#">Sumber Daya</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-blue-900 hover:scale-105 transition-transform duration-200">contrast</button>
+<button class="material-symbols-outlined text-blue-900 hover:scale-105 transition-transform duration-200">format_size</button>
+<button class="material-symbols-outlined text-blue-900 hover:scale-105 transition-transform duration-200">account_circle</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-6 max-w-5xl mx-auto">
+<!-- Progress Indicator -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="text-secondary font-bold tracking-widest text-sm uppercase block mb-1">Langkah 01 dari 02</span>
+<h1 class="text-4xl md:text-5xl font-black text-primary tracking-tight">Identitas &amp; Verifikasi</h1>
+</div>
+<div class="hidden md:block text-right">
+<span class="text-sm font-semibold text-outline">Progres</span>
+<div class="text-2xl font-bold text-primary">50%</div>
+</div>
+</div>
+<div class="w-full h-4 bg-surface-container-high rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-gradient-to-r from-primary to-primary-container transition-all duration-700"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Verification Focus -->
+<div class="lg:col-span-8 space-y-8">
+<section class="bg-surface-container-low p-8 rounded-xl shadow-sm">
+<div class="flex items-start gap-4 mb-6">
+<div class="bg-primary text-white p-3 rounded-xl">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Verifikasi Disabilitas</h2>
+<p class="text-on-surface-variant mt-2 leading-relaxed">Untuk memberikan peluang karier dan dukungan aksesibilitas yang paling relevan, kami perlu memverifikasi kelayakan Anda. Silakan pilih salah satu metode berikut.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Upload Option 1 -->
+<button class="group p-6 bg-surface-container-lowest rounded-xl border-2 border-transparent hover:border-secondary-container transition-all text-left focus:ring-3 focus:ring-secondary-container outline-none">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">description</span>
+<h3 class="text-xl font-bold text-primary mb-2">Unggah Sertifikat</h3>
+<p class="text-sm text-on-surface-variant leading-snug">Unggah file PDF atau Gambar dari sertifikat disabilitas resmi Anda.</p>
+<div class="mt-6 flex items-center text-primary font-bold gap-2">
+<span>Pilih Berkas</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</button>
+<!-- Upload Option 2 -->
+<button class="group p-6 bg-surface-container-lowest rounded-xl border-2 border-transparent hover:border-secondary-container transition-all text-left focus:ring-3 focus:ring-secondary-container outline-none">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<h3 class="text-xl font-bold text-primary mb-2">Verifikasi Video</h3>
+<p class="text-sm text-on-surface-variant leading-snug">Rekam video singkat atau gunakan Bahasa Isyarat untuk memverifikasi identitas Anda.</p>
+<div class="mt-6 flex items-center text-primary font-bold gap-2">
+<span>Mulai Kamera</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</button>
+</div>
+</section>
+<!-- Step 2 Preview: Career Interests -->
+<section class="bg-surface p-8 rounded-xl border-2 border-dashed border-outline-variant opacity-60">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-2xl text-outline">psychology</span>
+<h2 class="text-2xl font-bold text-outline">Kuis Minat Karier</h2>
+</div>
+<p class="text-on-surface-variant">Selesaikan verifikasi untuk membuka penilaian karier pribadi Anda. Kuis berdurasi 5 menit ini membantu kami mencocokkan Anda dengan perusahaan yang inklusif.</p>
+</section>
+</div>
+<!-- Right Column: Support & Assistance -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="bg-primary-fixed p-6 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-lg font-black text-on-primary-fixed mb-4">Butuh Bantuan?</h3>
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-xl flex items-center justify-center gap-3 font-bold hover:scale-[1.02] transition-transform shadow-lg focus:ring-3 focus:ring-secondary-container">
+<span class="material-symbols-outlined">sign_language</span>
+                            Bantuan Bahasa Isyarat
+                        </button>
+<p class="mt-4 text-sm text-on-primary-fixed-variant leading-relaxed">Spesialis aksesibilitas kami tersedia 24/7 untuk memandu Anda melalui proses ini.</p>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">support_agent</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
+<h3 class="font-bold text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">shield</span>
+                        Privasi &amp; Keamanan
+                    </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">
+                        KARYA menggunakan enkripsi kelas perusahaan. Data medis dan sertifikat Anda dienkripsi dan hanya dapat diakses oleh petugas kepatuhan aksesibilitas yang terverifikasi.
+                    </p>
+<a class="text-xs font-bold text-secondary underline decoration-2 underline-offset-4" href="#">Pelajari kebijakan Data kami</a>
+</div>
+<!-- Guided Image -->
+<div class="rounded-xl overflow-hidden h-48 bg-surface-container-highest">
+<img alt="Lingkungan kerja inklusif" class="w-full h-full object-cover" data-alt="Tampilan dekat tim profesional kantor yang beragam sedang berkolaborasi dengan teknologi aksesibel dan sinar matahari alami yang masuk melalui jendela besar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiTUX8LSHPMEV8fxlthtnNhXSMh7zvGLq4vd7yrOIs8Kvvi2XIz6LpGqnAjCqIm5Rt44G1bQvZt3m-C0VUu7pQMkFhCg76e_lL66m-kwwOOsNlvSmHht4xefhylss4LbXbcu0qcI3JFijx9RYB4qLyAkydU3zcuSy2F8qiITFXHDiigr3lpzd4B4pl0QWZkF1gy_KP-0dbGj1lKU9giK2I3IAAM2mWtJwzUFdN2EQgB9kYzEXycrySG4opBo8Z7-MPR8S5WGt0ZAU"/>
+</div>
+</aside>
+</div>
+<!-- Navigation Buttons -->
+<div class="mt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-[-4px] transition-all py-4 px-8">
+<span class="material-symbols-outlined">arrow_back</span>
+                Kembali ke Dasbor
+            </button>
+<button class="w-full md:w-auto bg-gradient-to-r from-primary to-primary-container text-white py-5 px-12 rounded-xl text-xl font-black shadow-xl hover:scale-105 transition-transform flex items-center justify-center gap-3 disabled:opacity-50" disabled="">
+                Lanjutkan ke Kuis
+                <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- SideNavBar (Mobile Trigger Hidden, Logic preserved from JSON) -->
+<aside class="hidden md:flex h-full w-20 fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 flex-col py-8 gap-6 items-center z-40 border-r border-slate-200/20">
+<div class="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<div class="w-12 h-12 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center justify-center transition-all cursor-pointer">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="w-12 h-12 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center justify-center transition-all cursor-pointer">
+<span class="material-symbols-outlined">accessibility_new</span>
+</div>
+<div class="mt-auto w-12 h-12 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center justify-center transition-all cursor-pointer">
+<span class="material-symbols-outlined">help_outline</span>
+</div>
+</aside>
+<footer class="w-full py-12 px-8 bg-slate-50 dark:bg-slate-950 mt-12 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-screen-2xl mx-auto">
+<p class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500">
+                © 2024 KARYA. Memberdayakan Kemampuan.
+            </p>
+<div class="flex gap-8">
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 hover:opacity-80 transition-all" href="#">Pernyataan Aksesibilitas</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 hover:opacity-80 transition-all" href="#">Forum Komunitas</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 hover:opacity-80 transition-all" href="#">Hukum</a>
+<a class="font-['Lexend'] text-sm tracking-wide uppercase font-semibold text-slate-500 hover:text-blue-900 hover:opacity-80 transition-all" href="#">Kebijakan Privasi</a>
+</div>
+</div>
+</footer>
+<!-- FAB Support -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(124,88,0,0.3)] hover:scale-110 transition-transform md:hidden z-50">
+<span class="material-symbols-outlined text-3xl">question_answer</span>
+</button>
+</body></html>
