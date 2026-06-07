@@ -1,371 +1,209 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KARYA Community Chat</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "tertiary-fixed-dim": "#ffb2bf",
-                    "error": "#ba1a1a",
-                    "on-tertiary-container": "#ff688e",
-                    "inverse-primary": "#b6c4ff",
-                    "outline-variant": "#c3c6d1",
-                    "on-secondary-fixed": "#271900",
-                    "secondary-fixed": "#ffdea8",
-                    "inverse-surface": "#303030",
-                    "secondary-fixed-dim": "#ffba20",
-                    "surface-container-high": "#eae7e7",
-                    "tertiary-container": "#6c002a",
-                    "primary-fixed": "#dce1ff",
-                    "tertiary": "#450018",
-                    "surface-container-low": "#f6f3f2",
-                    "on-surface": "#1b1c1c",
-                    "on-primary": "#ffffff",
-                    "on-primary-fixed-variant": "#093cab",
-                    "surface": "#fcf9f8",
-                    "surface-tint": "#3056c4",
-                    "on-surface-variant": "#43474f",
-                    "secondary-container": "#feb700",
-                    "surface-container-highest": "#e5e2e1",
-                    "primary-fixed-dim": "#b6c4ff",
-                    "surface-bright": "#fcf9f8",
-                    "on-secondary-fixed-variant": "#5e4200",
-                    "surface-dim": "#dcd9d9",
-                    "on-error": "#ffffff",
-                    "on-secondary": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "surface-container": "#f0eded",
-                    "on-tertiary": "#ffffff",
-                    "background": "#fcf9f8",
-                    "surface-variant": "#e5e2e1",
-                    "primary": "#001855",
-                    "outline": "#737780",
-                    "on-error-container": "#93000a",
-                    "surface-container-lowest": "#ffffff",
-                    "inverse-on-surface": "#f3f0ef",
-                    "on-tertiary-fixed-variant": "#90003b",
-                    "on-secondary-container": "#6b4b00",
-                    "on-tertiary-fixed": "#3f0016",
-                    "on-background": "#1b1c1c",
-                    "secondary": "#7c5800",
-                    "tertiary-fixed": "#ffd9de",
-                    "primary-container": "#002a84",
-                    "on-primary-container": "#7796ff",
-                    "on-primary-fixed": "#00164f"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Lexend"],
-                    "body": ["Lexend"],
-                    "label": ["Lexend"]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Lexend', sans-serif; }
-    </style>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Community Chat - KARYA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { font-family: 'Lexend', sans-serif; }</style>
 </head>
-<body class="bg-surface text-on-surface">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
-<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
-<div class="text-2xl font-black text-blue-900 dark:text-blue-50 tracking-tighter">KARYA</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="#">Jobs</a>
-<a class="text-blue-900 dark:text-blue-100 border-b-4 border-amber-500 pb-1 hover:scale-105 transition-transform duration-200" href="#">Community</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="#">Resources</a>
-</div>
-<div class="flex items-center gap-6">
-<button class="material-symbols-outlined text-blue-900 hover:scale-105 transition-transform">contrast</button>
-<button class="material-symbols-outlined text-blue-900 hover:scale-105 transition-transform">format_size</button>
-<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-secondary-container">
-<img alt="User profile" data-alt="Professional headshot of a smiling young man in a clean studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5V9yU7oVMzJmNiYumSlqKOm1bG0TNh0tsJTlSo9POPp1viZsr9yfmD3DyzyM-sP8Nd40WeYgwiIcfO5tsUugaCHittxsLG-esaujDLvjsx2kiSFlAgtTpuE9qj0EVLszmMGkADhSZx4aZGr8ll_DjkjeuQfh1yS-y48PxsyXVy9yhEwb0dFZ56sWUo5VFwY61Hy5USBEYJvrsuFImvcvYBTD8SfsV5ChutArEhCgeApFj-_sV5Ok8-8hA9Sttzv08xr1FwZZrXOw"/>
-</div>
-</div>
-</div>
-</nav>
-<div class="flex h-screen pt-[72px]">
-<!-- SideNavBar -->
-<aside class="h-full w-72 bg-slate-50 dark:bg-slate-900 flex flex-col py-8 gap-4 sticky top-[72px]">
-<div class="px-6 mb-4">
-<h2 class="text-lg font-bold text-blue-900">Welcome back</h2>
-<p class="text-sm text-slate-500">Karya Community Member</p>
-</div>
-<nav class="flex flex-col gap-1">
-<button class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1">
-<span class="material-symbols-outlined">work</span> Find Jobs
-                </button>
-<button class="bg-blue-900 text-white rounded-xl shadow-lg px-4 py-3 mx-2 flex items-center gap-3 transition-all duration-300 hover:translate-x-1">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span> Community Chat
-                </button>
-<button class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1">
-<span class="material-symbols-outlined">description</span> My Applications
-                </button>
-<button class="text-slate-700 dark:text-slate-300 px-4 py-3 mx-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300 hover:translate-x-1">
-<span class="material-symbols-outlined">accessibility_new</span> Accessibility Settings
-                </button>
-<div class="mt-auto px-2">
-<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] transition-transform">
-                        Post a Job
-                    </button>
-<button class="mt-4 text-slate-700 dark:text-slate-300 px-4 py-3 w-full text-left hover:bg-slate-200 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 transition-all duration-300">
-<span class="material-symbols-outlined">logout</span> Sign Out
-                    </button>
-</div>
-</nav>
-</aside>
-<!-- Main Content Area -->
-<main class="flex-1 flex overflow-hidden bg-surface">
-<!-- Channel Sidebar (Asymmetric layout) -->
-<div class="w-80 bg-surface-container-low flex flex-col border-r-0">
-<div class="p-6">
-<h3 class="label-md tracking-widest text-slate-500 mb-6 uppercase text-xs font-bold">Active Communities</h3>
-<div class="space-y-4">
-<!-- Tips Interview -->
-<div class="p-4 bg-surface-container-highest rounded-xl cursor-pointer hover:bg-primary-fixed transition-colors">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined">psychology</span>
-</div>
-<div>
-<h4 class="font-bold text-primary">Tips Interview</h4>
-<p class="text-xs text-slate-500">24 active members</p>
-</div>
-</div>
-</div>
-<!-- Info Bansos -->
-<div class="p-4 bg-primary text-white rounded-xl shadow-xl cursor-pointer">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
-</div>
-<div>
-<h4 class="font-bold">Info Bansos</h4>
-<p class="text-xs text-blue-200">5 new messages</p>
-</div>
-</div>
-</div>
-<!-- Sharing Hobi -->
-<div class="p-4 bg-surface-container-highest rounded-xl cursor-pointer hover:bg-primary-fixed transition-colors">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-lg bg-on-tertiary-container flex items-center justify-center text-white">
-<span class="material-symbols-outlined">palette</span>
-</div>
-<div>
-<h4 class="font-bold text-primary">Sharing Hobi</h4>
-<p class="text-xs text-slate-500">12 members online</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-auto p-6 bg-surface-container">
-<div class="flex items-center justify-between mb-4">
-<span class="text-sm font-bold text-primary">Live Support</span>
-<span class="w-2 h-2 rounded-full bg-green-500"></span>
-</div>
-<p class="text-xs text-slate-600 leading-relaxed">Need help with accessibility? Our agents are here for you.</p>
-</div>
-</div>
-<!-- Chat Canvas -->
-<div class="flex-1 flex flex-col bg-surface-container-lowest">
-<!-- Chat Header -->
-<header class="px-8 py-4 flex items-center justify-between bg-white/50 backdrop-blur-md shadow-sm">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
-</div>
-<div>
-<h2 class="text-xl font-bold text-primary">Info Bansos</h2>
-<p class="text-sm text-slate-500 flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Government Support &amp; Grants
-                            </p>
-</div>
-</div>
-<div class="flex gap-4">
-<button class="p-3 bg-secondary-fixed text-on-secondary-fixed rounded-xl flex items-center gap-2 font-bold hover:scale-105 transition-transform">
-<span class="material-symbols-outlined">videocam</span> Sign Language Call
-                        </button>
-<button class="p-3 bg-surface-container-high rounded-xl hover:bg-surface-container-highest transition-colors">
-<span class="material-symbols-outlined">search</span>
-</button>
-</div>
-</header>
-<!-- Messages Area -->
-<div class="flex-1 overflow-y-auto p-8 space-y-8">
-<!-- Message Left -->
-<div class="flex items-start gap-4 max-w-2xl">
-<div class="w-10 h-10 rounded-full overflow-hidden shrink-0 mt-1">
-<img alt="Sarah" data-alt="Portrait of a professional woman with a warm expression against a soft-focus office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmvHalQ54EUun0s8mN4nKRF9a0IqfUIYxlWLUS7dy1VH2L87U1SJWalLwgROvmqaFWdKqsW_5zvu29MI-iJOi30BWg72yXY03_oRGDAnDZd70uC0EARBk5nk42EKZ76v6R1r7Tsb_8lhCjUa1eZ7aYpQJKxZMC1krDRVbYyX6lJp14U2UKpm7gtEO43Sa9hz9vSUH_Sw8-xpwoWJtHGyfRCELfDusIdhtxKoK55aIw_WyToJhRaT4tMklek0qt-Si2_Tel7bJ7qYU"/>
-</div>
-<div class="flex flex-col gap-2">
-<div class="flex items-center gap-3">
-<span class="font-bold text-primary">Sarah K.</span>
-<span class="text-xs text-slate-400">10:45 AM</span>
-</div>
-<div class="bg-surface-container-high p-4 rounded-2xl rounded-tl-none">
-<p class="text-on-surface leading-relaxed">Halo teman-teman! Ada info baru soal bantuan modal usaha untuk penyandang disabilitas. Link pendaftaran sudah dibuka di website resmi.</p>
-</div>
-<div class="flex gap-2">
-<button class="text-xs bg-primary-fixed text-primary px-3 py-1 rounded-full font-bold flex items-center gap-1">
-<span class="material-symbols-outlined text-sm">volume_up</span> Text-to-Speech
-                                </button>
-</div>
-</div>
-</div>
-<!-- Message Right (User) -->
-<div class="flex items-start gap-4 max-w-2xl ml-auto flex-row-reverse">
-<div class="w-10 h-10 rounded-full overflow-hidden shrink-0 mt-1">
-<img alt="Me" data-alt="Close-up of a smiling young man's face, warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbuCnNMLXfEe0LqCbRsByLWcZk6NoJU5XtDSSqvWrcWKx7LQ2iQk6S-J_X6EBWUMrjEfFG6cPZ3_8PB2PVHu8_RiY-KAkUoLeV7GsYeDRHFT3FF30563lE6tcvc_me8Ua8wPQy_8sXNxBcDMb0TCOmMmROQ49zEyTmc52T_VUkzuSVSpoBNIuwOX0kNK2HGYUPJxLhLjS_U_FCrtufHCbtii8BNl12Rnzdj1RzgTcQ17E6KncfnV1fix_fUztKpUj6VfOaD3WORlc"/>
-</div>
-<div class="flex flex-col gap-2 items-end">
-<div class="flex items-center gap-3">
-<span class="text-xs text-slate-400">10:48 AM</span>
-<span class="font-bold text-primary">You</span>
-</div>
-<div class="bg-primary text-white p-4 rounded-2xl rounded-tr-none shadow-lg">
-<p class="leading-relaxed">Terima kasih infonya, Sarah! Apakah ada dokumen khusus yang perlu disiapkan? Saya ingin mendaftarkan UMKM kerajinan tangan saya.</p>
-</div>
-</div>
-</div>
-<!-- System Event: ASL Sticker -->
-<div class="flex justify-center my-6">
-<div class="bg-secondary-fixed/30 border border-secondary-container p-4 rounded-2xl flex items-center gap-4">
-<div class="w-20 h-20 rounded-lg bg-white p-2 shadow-sm">
-<img alt="ASL Sticker" data-alt="A clean, minimalist 3D illustration of a hand gesture representing 'Thank You' in sign language" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuTYxRbxGrmz2DNSaiMZTOdg9N8ToZMUlDYMNm6-_ilI_ZEWHRe0p11oEfF49tU1mMU4yFRTyVQ02iyHRvSb2ucHg7fo93-fdu6QUreaxI6tRqA531T9ZkbtHm6hNh24P_gEcfikxLeCUU2s5tIqpk2yY8ZQY-zWJd-g1JqHvTrrmpZHvuiHoEzgiy4y7hjc3oLJo39v5Th7Qzdz20w5ta3FrMw8iTH3xLRf4HcD_i9CaNjKGdcJhUmdRRB_SdMSDnJgfwVD5U3m0"/>
-</div>
-<div>
-<p class="text-sm font-bold text-on-secondary-fixed">Sent an ASL "Thank You" Sticker</p>
-<p class="text-xs text-on-secondary-fixed-variant">Visual communication enabled</p>
-</div>
-</div>
-</div>
-<!-- Voice Message -->
-<div class="flex items-start gap-4 max-w-2xl">
-<div class="w-10 h-10 rounded-full overflow-hidden shrink-0 mt-1">
-<img alt="Budi" data-alt="Portrait of a middle-aged man with a professional and friendly demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-qw-PbujK-6fnracqnPqqdPzXp273yNuK41M_sMVCcDhhH9IKJxj7wiXDxos2qy-mBszMj0UYigfD3gGu3BJveGYR38Vot7qCDjYMfhBmYeRbUnLxFsY6xUQIgsExYdYRQc_QSOv0rKSZsChidkdvdBEJoLBIroAxl8-U-_wDMxciQLfF8-WYJa6CVNHRTiZkO2JuhFCdfgtY3_haHzE2hEnkYT8Ad6thQEUox93vdgrCF8nyiNnBrKjegknZU-aU-Mou3ytR7ZU"/>
-</div>
-<div class="flex flex-col gap-2">
-<div class="flex items-center gap-3">
-<span class="font-bold text-primary">Budi Santoso</span>
-<span class="text-xs text-slate-400">11:02 AM</span>
-</div>
-<div class="bg-surface-container-high p-4 rounded-2xl rounded-tl-none w-80">
-<div class="flex items-center gap-4">
-<button class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</button>
-<div class="flex-1 space-y-1">
-<div class="h-1 bg-primary/20 w-full rounded-full overflow-hidden">
-<div class="h-full bg-primary w-1/3"></div>
-</div>
-<div class="flex justify-between text-[10px] text-slate-500">
-<span>0:12</span>
-<span>0:45</span>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-slate-100 p-3 rounded-lg text-xs italic text-slate-600 flex items-start gap-2">
-<span class="material-symbols-outlined text-sm">description</span>
-                                "Tentu, untuk dokumennya biasanya butuh KTP dan SKU. Nanti saya kirim PDF contoh formulirnya ya..."
-                            </div>
-</div>
-</div>
-</div>
-<!-- Input Area -->
-<footer class="p-6 bg-white border-t-0">
-<div class="max-w-4xl mx-auto">
-<div class="bg-surface-container-highest rounded-2xl p-2 flex items-end gap-2 shadow-inner">
-<button class="p-3 text-primary hover:bg-surface-container-high rounded-xl transition-colors">
-<span class="material-symbols-outlined">add</span>
-</button>
-<button class="p-3 text-primary hover:bg-surface-container-high rounded-xl transition-colors">
-<span class="material-symbols-outlined">sentiment_satisfied</span>
-</button>
-<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-primary py-3 resize-none font-medium placeholder-slate-400" placeholder="Type your message..." rows="1"></textarea>
-<div class="flex gap-2 p-1">
-<button class="p-3 bg-secondary-container text-primary rounded-xl hover:scale-105 transition-transform">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
-</button>
-<button class="p-3 bg-primary text-white rounded-xl shadow-lg hover:scale-105 transition-transform px-6">
-<span class="material-symbols-outlined">send</span>
-</button>
-</div>
-</div>
-<div class="flex justify-center gap-6 mt-4">
-<button class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-sm">keyboard</span> Shortcut: Ctrl + Enter to Send
-                            </button>
-<button class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-sm">record_voice_over</span> Voice Input Active
-                            </button>
-</div>
-</div>
-</footer>
-</div>
-<!-- Contextual Info Panel (Bento Style) -->
-<div class="hidden xl:flex w-80 bg-surface flex-col p-6 gap-6 overflow-y-auto">
-<div class="bg-primary-fixed p-6 rounded-3xl space-y-4">
-<h3 class="font-black text-primary text-lg">Community Guidelines</h3>
-<p class="text-sm text-blue-900/70 leading-relaxed">Supportive. Inclusive. Reliable. Help us keep Karya a safe space for everyone.</p>
-</div>
-<div class="grid grid-cols-1 gap-4">
-<div class="bg-surface-container p-4 rounded-2xl">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-secondary">folder</span>
-<span class="font-bold text-sm">Shared Files</span>
-</div>
-<p class="text-xs text-slate-500">Manual_Bansos_2024.pdf</p>
-</div>
-<div class="bg-surface-container p-4 rounded-2xl">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-secondary">link</span>
-<span class="font-bold text-sm">Useful Links</span>
-</div>
-<p class="text-xs text-slate-500">kemensos.go.id/bantuan</p>
-</div>
-</div>
-<div class="bg-surface-container-high rounded-3xl p-6 flex-1 flex flex-col items-center justify-center text-center space-y-4">
-<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
-<span class="material-symbols-outlined text-3xl">diversity_1</span>
-</div>
-<div>
-<h4 class="font-bold text-primary">Need a Mentor?</h4>
-<p class="text-xs text-slate-500 mt-2">Connect with veteran community members for 1-on-1 guidance.</p>
-</div>
-<button class="w-full py-3 bg-primary text-white rounded-xl font-bold text-sm">Find Mentor</button>
-</div>
-</div>
-</main>
-</div>
-<!-- Footer -->
-<footer class="w-full py-12 px-8 bg-slate-50 dark:bg-slate-950 flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-<div class="text-slate-500 text-sm tracking-wide uppercase font-semibold">© 2024 KARYA. Empowering Ability.</div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="#">Accessibility Statement</a>
-<a class="text-amber-600 font-bold underline font-['Lexend'] text-sm tracking-wide uppercase" href="#">Community Forum</a>
-<a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="#">Legal</a>
-<a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="#">Privacy Policy</a>
-</div>
-</footer>
-</body></html>
+<body class="bg-slate-50 text-slate-900 flex flex-col h-screen overflow-hidden">
+
+    <!-- Top Navbar -->
+    <nav class="w-full bg-white border-b border-slate-200 px-8 py-4 flex justify-between items-center shrink-0">
+        <a href="../index.html" class="text-2xl font-black text-blue-900 tracking-tighter">KARYA</a>
+        <div class="hidden md:flex items-center gap-8 relative">
+            <a class="text-slate-600 font-medium hover:text-blue-900" href="../job_dashboard_karya/index.html">Jobs</a>
+            <a class="text-blue-900 font-bold border-b-2 border-amber-500 pb-1" href="#">Community</a>
+            <a class="text-slate-600 font-medium hover:text-blue-900" href="../training_mentoring_karya/index.html">Resources</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-slate-700 cursor-pointer">contrast</span>
+            <span class="material-symbols-outlined text-slate-700 cursor-pointer">format_size</span>
+            <div class="w-8 h-8 rounded-full bg-amber-500 overflow-hidden"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100" alt="profile"></div>
+        </div>
+    </nav>
+
+    <!-- Main Workspace Area -->
+    <div class="flex flex-1 overflow-hidden w-full">
+        <!-- Left Sidebar Options -->
+        <aside class="w-64 bg-white border-r border-slate-100 p-6 flex flex-col justify-between shrink-0 hidden lg:flex">
+            <div class="space-y-6">
+                <div>
+                    <h2 class="text-lg font-bold text-blue-950">Welcome back</h2>
+                    <p class="text-xs text-slate-400">Karya Community Member</p>
+                </div>
+                <nav class="space-y-2">
+                    <a href="../job_dashboard_karya/index.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 font-medium rounded-xl hover:bg-slate-50"><span class="material-symbols-outlined">work</span> Find Jobs</a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 bg-blue-900 text-white font-medium rounded-xl shadow-md shadow-blue-900/20"><span class="material-symbols-outlined">groups</span> Community Chat</a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-600 font-medium rounded-xl hover:bg-slate-50"><span class="material-symbols-outlined">description</span> My Applications</a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-600 font-medium rounded-xl hover:bg-slate-50"><span class="material-symbols-outlined">accessibility</span> Accessibility Settings</a>
+                </nav>
+                <button class="w-full bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold py-3 px-4 rounded-xl shadow-lg shadow-amber-500/10">Post a Job</button>
+            </div>
+            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 text-slate-500 font-medium hover:text-red-600"><span class="material-symbols-outlined">logout</span> Sign Out</a>
+        </aside>
+
+        <!-- Active Communities List Row -->
+        <div class="w-72 bg-slate-50 border-r border-slate-200/60 p-4 shrink-0 hidden md:block overflow-y-auto">
+            <h3 class="text-xs font-black text-slate-400 uppercase tracking-wider mb-4 px-2">Active Communities</h3>
+            <div class="space-y-3">
+                <div class="p-4 bg-slate-200/50 rounded-2xl flex items-center gap-3 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-blue-900 flex items-center justify-center text-white"><span class="material-symbols-outlined">psychology</span></div>
+                    <div><h4 class="text-sm font-bold text-slate-800">Tips Interview</h4><p class="text-xs text-slate-400">24 active members</p></div>
+                </div>
+                <div class="p-4 bg-blue-950 text-white rounded-2xl flex items-center gap-3 cursor-pointer shadow-md">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-blue-950"><span class="material-symbols-outlined">campaign</span></div>
+                    <div><h4 class="text-sm font-bold">Info Bansos</h4><p class="text-xs text-blue-200/70">5 new messages</p></div>
+                </div>
+                <div class="p-4 bg-slate-200/50 rounded-2xl flex items-center gap-3 cursor-pointer">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500 flex items-center justify-center text-white"><span class="material-symbols-outlined">palette</span></div>
+                    <div><h4 class="text-sm font-bold text-slate-800">Sharing Hobi</h4><p class="text-xs text-slate-400">12 members online</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Main Area Container -->
+        <div class="flex-1 flex flex-col bg-white overflow-hidden">
+            <!-- Chat Title Row -->
+            <div class="px-8 py-4 border-b border-slate-100 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center text-white"><span class="material-symbols-outlined">campaign</span></div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-lg">Info Bansos</h3>
+                        <p class="text-xs text-amber-600 font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Government Support & Grants</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button class="bg-amber-100 text-amber-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2 hover:bg-amber-200"><span class="material-symbols-outlined text-lg">videocam</span> Sign Language Call</button>
+                    <button class="p-2 bg-slate-100 rounded-xl text-slate-600 hover:bg-slate-200"><span class="material-symbols-outlined">search</span></button>
+                </div>
+            </div>
+
+            <!-- Chat Message Logs Container (Scrollable) -->
+            <div id="chat-container" class="flex-1 p-8 overflow-y-auto space-y-6 bg-slate-50/40">
+                <!-- Message Sarah K -->
+                <div class="flex items-start gap-3 max-w-2xl">
+                    <div class="w-8 h-8 rounded-full bg-slate-300 overflow-hidden shrink-0"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100"></div>
+                    <div>
+                        <div class="flex items-baseline gap-2 mb-1"><span class="font-bold text-sm text-slate-800">Sarah K.</span><span class="text-[10px] text-slate-400">10:45 AM</span></div>
+                        <div class="bg-white border border-slate-100 p-4 rounded-2xl rounded-tl-none shadow-sm text-slate-700 text-sm leading-relaxed">
+                            Halo teman-teman! Ada info baru soal bantuan modal usaha untuk penyandang disabilitas. Link pendaftaran sudah dibuka di website resmi.
+                        </div>
+                        <button class="mt-2 flex items-center gap-1 text-xs font-bold text-blue-900 bg-blue-50 px-2 py-1 rounded-lg"><span class="material-symbols-outlined text-sm">volume_up</span> Text-to-Speech</button>
+                    </div>
+                </div>
+
+                <!-- Message Sent By You -->
+                <div class="flex flex-col items-end space-y-1">
+                    <span class="text-[10px] text-slate-400 mr-1">10:48 AM • <b>You</b></span>
+                    <div class="bg-blue-950 text-white p-4 rounded-2xl rounded-tr-none max-w-xl shadow-sm text-sm leading-relaxed">
+                        Terima kasih infonya, Sarah! Apakah ada dokumen khusus yang perlu disiapkan? Saya ingin mendaftarkan UMKM kerajinan tangan saya.
+                    </div>
+                </div>
+
+                <!-- Sticker Announcement Block -->
+                <div class="flex justify-center my-4">
+                    <div class="border border-amber-200 bg-amber-50/50 rounded-2xl p-4 flex items-center gap-4 max-w-md shadow-sm">
+                        <div class="w-12 h-12 rounded-lg bg-white overflow-hidden border border-amber-100 flex items-center justify-center font-bold text-xs">sticker</div>
+                        <div>
+                            <h4 class="text-sm font-bold text-amber-950">Sent an ASL "Thank You" Sticker</h4>
+                            <p class="text-xs text-amber-700/80">Visual communication enabled</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Budi Santoso -->
+                <div class="flex items-start gap-3 max-w-2xl">
+                    <div class="w-8 h-8 rounded-full bg-slate-300 overflow-hidden shrink-0"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100"></div>
+                    <div>
+                        <div class="flex items-baseline gap-2 mb-1"><span class="font-bold text-sm text-slate-800">Budi Santoso</span><span class="text-[10px] text-slate-400">11:02 AM</span></div>
+                        <div class="bg-white border border-slate-100 p-3 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-3 w-72">
+                            <button class="w-8 h-8 bg-blue-950 text-white rounded-full flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-sm">play_arrow</span></button>
+                            <div class="flex-1 bg-slate-100 h-1 rounded-full relative"><div class="absolute bg-blue-900 w-1/4 h-full rounded-full"></div></div>
+                            <span class="text-[10px] font-medium text-slate-400">0:12/0:45</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Bottom Input Dock Component -->
+            <div class="p-6 border-t border-slate-100 bg-white shrink-0">
+                <div class="bg-slate-100 rounded-2xl p-2 flex items-center gap-2 border border-slate-200/40">
+                    <button class="p-2 text-slate-500 hover:text-slate-800"><span class="material-symbols-outlined">add</span></button>
+                    <button class="p-2 text-slate-500 hover:text-slate-800"><span class="material-symbols-outlined">mood</span></button>
+                    <input id="chat-input" type="text" placeholder="info tempik lur" class="flex-1 bg-transparent border-none focus:ring-0 text-sm text-slate-800 px-2" value="info tempik lur"/>
+                    <div class="flex items-center gap-1 text-slate-400 px-1 border-r border-slate-200">
+                        <span class="material-symbols-outlined text-sm cursor-pointer hover:text-slate-600">arrow_drop_up</span>
+                        <span class="material-symbols-outlined text-sm cursor-pointer hover:text-slate-600">arrow_drop_down</span>
+                    </div>
+                    <button class="p-2 bg-amber-500 text-blue-950 rounded-xl hover:bg-amber-600 shrink-0 flex items-center justify-center"><span class="material-symbols-outlined">mic</span></button>
+                    <button id="send-btn" class="p-2 bg-blue-950 text-white rounded-xl hover:bg-blue-900 shrink-0 flex items-center justify-center w-10 h-10 shadow-sm"><span class="material-symbols-outlined">send</span></button>
+                </div>
+                <div class="flex justify-between items-center px-2 mt-2 text-[10px] text-slate-400 font-bold tracking-wider uppercase">
+                    <div>Shortcut: Ctrl + Enter to Send</div>
+                    <div class="flex items-center gap-1 text-emerald-600"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Voice Input Active</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Informational Panel -->
+        <aside class="w-72 bg-white border-l border-slate-100 p-6 space-y-6 shrink-0 hidden xl:block overflow-y-auto">
+            <div class="p-4 bg-blue-50 border border-blue-100 rounded-2xl">
+                <h4 class="text-xs font-black text-blue-950 uppercase tracking-wider mb-2">Community Guidelines</h4>
+                <p class="text-xs text-blue-900/80 leading-relaxed">Supportive. Inclusive. Reliable. Help us keep Karya a safe space for everyone.</p>
+            </div>
+            <div>
+                <h4 class="text-xs font-black text-slate-400 uppercase tracking-wider mb-3">Shared Files</h4>
+                <div class="flex items-center gap-2 p-2 hover:bg-slate-50 rounded-xl cursor-pointer"><span class="material-symbols-outlined text-red-500">picture_as_pdf</span> <div class="truncate text-xs font-medium text-slate-700">Manual_Bansos_2024.pdf</div></div>
+            </div>
+            <div>
+                <h4 class="text-xs font-black text-slate-400 uppercase tracking-wider mb-3">Useful Links</h4>
+                <a href="#" class="text-xs font-bold text-blue-900 underline block truncate">kemensos.go.id/bantuan</a>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-100 rounded-3xl text-center flex flex-col items-center">
+                <span class="material-symbols-outlined text-4xl text-blue-950 mb-3">diversity_1</span>
+                <h4 class="font-bold text-sm text-blue-950 mb-1">Need a Mentor?</h4>
+                <p class="text-xs text-slate-400 mb-4">Connect with veteran community members for 1-on-1 guidance.</p>
+                <button class="w-full bg-blue-950 text-white font-bold py-2 px-4 rounded-xl text-xs">Find Mentor</button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Active Core Messaging Script Injection -->
+    <script>
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatContainer = document.getElementById('chat-container');
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (text === '') return;
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = "flex flex-col items-end space-y-1";
+            
+            messageDiv.innerHTML = `
+                <span class="text-[10px] text-slate-400 mr-1">Just Now • <b>You</b></span>
+                <div class="bg-blue-950 text-white p-4 rounded-2xl rounded-tr-none max-w-xl shadow-sm text-sm leading-relaxed">
+                    ${text}
+                </div>
+            `;
+            
+            chatContainer.appendChild(messageDiv);
+            chatInput.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || (e.ctrlKey && e.key === 'Enter')) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
