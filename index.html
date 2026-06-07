@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>KARYA Inclusive Career Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght=100..900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -86,18 +86,15 @@
 </head>
 <body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 
-<!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
     <div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
-        <!-- Logo mengarah ke landing page (file ini sendiri) -->
         <a href="index.html" class="text-2xl font-black text-blue-900 dark:text-blue-50 tracking-tighter">KARYA</a>
         
-        <!-- Menu Navigasi yang sudah diperbaiki jalurnya -->
         <div class="hidden md:flex items-center gap-8">
-            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="job_dashboard_karya/index.html">Lowongan</a>
-            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="community_chat_karya/index.html">Komunitas</a>
-            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="training_mentoring_karya/index.html">Sumber Daya</a>
-            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="assessment_verification_karya/index.html">Asesmen</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="job_dashboard_karya/index.html">Jobs</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="community_chat_karya/index.html">Community</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="training_mentoring_karya/index.html">Resources</a>
+            <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:scale-105 transition-transform duration-200" href="assessment_verification_karya/index.html">Assessment</a>
         </div>
         
         <div class="flex items-center gap-4">
@@ -107,7 +104,6 @@
             <button class="p-2 hover:scale-105 transition-transform duration-200 focus:ring-3 focus:ring-amber-400 focus:outline-none focus:ring-offset-2">
                 <span class="material-symbols-outlined text-blue-900 dark:text-blue-100">format_size</span>
             </button>
-            <!-- Tombol Akun mengarah ke halaman Login -->
             <a href="login_karya/index.html" class="p-2 hover:scale-105 transition-transform duration-200 focus:ring-3 focus:ring-amber-400 focus:outline-none focus:ring-offset-2">
                 <span class="material-symbols-outlined text-blue-900 dark:text-blue-100">account_circle</span>
             </a>
@@ -116,7 +112,6 @@
 </nav>
 
 <main class="pt-20">
-    <!-- Hero Section -->
     <section class="relative min-h-[921px] flex items-center overflow-hidden px-8">
         <div class="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div class="z-10 lg:col-span-12 text-center flex flex-col items-center mx-auto">
@@ -125,127 +120,29 @@
                     Kesempatan Aksi <br/>
                     <span class="text-on-primary-container">Ruang Yang Aksesibel</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed">KARYA lebih dari sekadar portal lowongan kerja. Ini adalah gerakan yang didedikasikan untuk menjembatani kesenjangan antara talenta profesional dan peluang inklusif. Martabat, kekuatan, dan kehangatan profesional dalam setiap koneksi.</p>
+                <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed">KARYA lebih dari sekadar portal lowongan kerja. Ini adalah gerakan yang didedikasikan untuk menjembatani kesenjangan antara talenta profesional dan peluang inklusif.</p>
                 <div class="flex flex-wrap gap-6">
-                    <a href="job_dashboard_karya/index.html" class="bg-gradient-to-br from-primary to-primary-container text-on-primary text-xl font-bold py-4 px-10 rounded-xl hover:scale-[1.02] transition-transform shadow-lg focus:ring-3 focus:ring-secondary-container focus:ring-offset-2">
+                    <a href="job_dashboard_karya/index.html" class="bg-gradient-to-br from-primary to-primary-container text-on-primary text-xl font-bold py-4 px-10 rounded-xl hover:scale-[1.02] transition-transform shadow-lg">
                         Cari Kerja Sekarang
                     </a>
-                    <a href="login_karya/index.html" class="bg-surface-container-high text-primary text-xl font-bold py-4 px-10 rounded-xl hover:bg-surface-container-highest transition-colors border-2 border-transparent focus:ring-3 focus:ring-secondary-container text-center flex items-center">Pasang Lowongan</a>
+                    <a href="login_karya/index.html" class="bg-surface-container-high text-primary text-xl font-bold py-4 px-10 rounded-xl hover:bg-surface-container-highest transition-colors text-center flex items-center">Pasang Lowongan</a>
                 </div>
             </div>
         </div>
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed rounded-full blur-[120px] opacity-50"></div>
         <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-secondary-fixed rounded-full blur-[120px] opacity-30"></div>
     </section>
-
-    <!-- Kenapa KARYA? Section -->
-    <section class="py-32 px-8 bg-surface-container-low">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <div class="max-w-3xl">
-                    <h2 class="text-5xl md:text-7xl font-black text-primary mb-8 tracking-tighter">Kenapa KARYA?</h2>
-                    <p class="text-xl text-on-surface-variant font-medium">Kami mendobrak pakem portal kerja tradisional dengan memprioritaskan aksesibilitas editorial. Kami tidak hanya mencantumkan pekerjaan; kami mengkurasi ruang inklusif di mana semua orang merasa memiliki.</p>
-                </div>
-                <div class="flex gap-4">
-                    <span class="w-16 h-1 bg-secondary-container mb-4"></span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-xl transition-shadow group">
-                    <div class="w-16 h-16 bg-primary-fixed rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-primary text-4xl">diversity_3</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-primary mb-4">Kemitraan Inklusif</h3>
-                    <p class="text-on-surface-variant leading-relaxed">Kami bekerja sama dengan perusahaan yang telah tervalidasi memiliki komitmen nyata terhadap keberagaman dan aksesibilitas.</p>
-                </div>
-                <div class="bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-xl transition-shadow group md:mt-12">
-                    <div class="w-16 h-16 bg-secondary-fixed rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-secondary text-4xl">verified</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-primary mb-4">Standard Tinggi</h3>
-                    <p class="text-on-surface-variant leading-relaxed">Setiap lowongan dilengkapi dengan detail aksesibilitas fisik dan digital yang transparan dan jujur.</p>
-                </div>
-                <div class="bg-surface-container-lowest p-10 rounded-3xl shadow-sm hover:shadow-xl transition-shadow group">
-                    <div class="w-16 h-16 bg-primary-fixed-dim rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-on-primary-fixed-variant text-4xl">psychology</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-primary mb-4">Dukungan Komunitas</h3>
-                    <p class="text-on-surface-variant leading-relaxed">Lebih dari sekadar mencari kerja, Anda mendapatkan akses ke sumber daya dan forum sesama anggota komunitas KARYA.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fitur Aksesibilitas Kami -->
-    <section class="py-32 px-8">
-        <div class="max-w-screen-2xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <div class="md:col-span-4 lg:col-span-3 flex flex-col justify-center">
-                    <h2 class="text-5xl md:text-7xl font-black text-primary mb-8 tracking-tighter">Fitur Aksesibilitas Kami</h2>
-                    <p class="text-xl text-on-surface-variant mb-8 leading-relaxed max-w-lg">Kami memperlakukan aksesibilitas bukan sebagai batasan, melainkan sebagai fitur estetika premium. Alat kami dirancang untuk martabat dan kemudahan penggunaan.</p>
-                    <a class="text-secondary font-bold flex items-center gap-2 group text-lg" href="training_mentoring_karya/index.html">
-                        Pelajari Selengkapnya 
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                    </a>
-                </div>
-                <div class="md:col-span-2 lg:col-span-3 bg-surface-container-high p-12 rounded-[2.5rem] flex flex-col items-center text-center justify-center border-b-8 border-secondary-container">
-                    <div class="p-6 bg-white rounded-full mb-8 shadow-inner">
-                        <span class="material-symbols-outlined text-7xl text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">accessible</span>
-                    </div>
-                    <h4 class="text-3xl font-black text-primary mb-4 uppercase tracking-widest">Akses Fisik</h4>
-                    <p class="text-on-surface-variant text-lg">Filter lowongan berdasarkan ketersediaan ramp, lift, dan toilet disabilitas.</p>
-                </div>
-                <div class="md:col-span-2 lg:col-span-2 bg-primary text-on-primary p-12 rounded-[2.5rem] flex flex-col items-center text-center justify-center">
-                    <div class="p-6 bg-primary-container rounded-full mb-8">
-                        <span class="material-symbols-outlined text-7xl text-white">sign_language</span>
-                    </div>
-                    <h4 class="text-2xl font-black mb-4 uppercase tracking-widest">Juru Bahasa Isyarat</h4>
-                    <p class="text-primary-fixed text-lg">Dukungan video call dengan interpreter untuk proses interview.</p>
-                </div>
-                <div class="md:col-span-2 lg:col-span-4 bg-secondary-fixed p-12 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-12">
-                    <div class="p-8 bg-white rounded-full shadow-lg shrink-0">
-                        <span class="material-symbols-outlined text-8xl text-secondary">distance</span>
-                    </div>
-                    <div>
-                        <h4 class="text-4xl font-black text-on-secondary-fixed mb-4 uppercase tracking-widest leading-none">Remote-First Working</h4>
-                        <p class="text-on-secondary-fixed-variant text-xl leading-relaxed">Teknologi kerja jarak jauh yang optimal untuk mobilitas yang lebih fleksibel tanpa hambatan fisik.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20 px-8">
-        <div class="max-w-screen-2xl mx-auto rounded-[3rem] overflow-hidden relative bg-primary-container">
-            <img alt="Empowerment background" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAP4NUbEgRPGWc6u0umhhxMZQnejli-Ginj2Ysz_ET-ntxLnDr-ozqoep23sk_JHh1sgB_UKiBKTLlD1dpV0se5iRmFCS0d5lCTikfrMjyq2ESz_p2NJEuvRGY2yvyuGHsVsuYSYUNxiW0Kt_OReiLSXMzVwlXq742kiOQKNY0RRLpliTpJuqpOhBoV5vwKxhSrlA9SR3yIUpo0nJBlqUydu7qny8dlOIiT1jV4vxPVhnBzSolMqZI48pgAwne8vmbhXvYVmkRH59c"/>
-            <div class="relative z-10 py-24 px-12 text-center flex flex-col items-center">
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-tight max-w-4xl">
-                    Siap Memulai Langkah Karir Baru Anda?
-                </h2>
-                <p class="text-blue-100 text-xl md:text-2xl mb-12 max-w-2xl font-light">
-                    Ribuan perusahaan sedang mencari bakat unik Anda. Mari bangun masa depan yang inklusif bersama KARYA.
-                </p>
-                <a href="job_dashboard_karya/index.html" class="bg-secondary-container text-on-secondary-container text-2xl font-black py-6 px-16 rounded-full hover:scale-105 transition-transform shadow-[0_12px_40px_rgba(254,183,0,0.3)] focus:ring-4 focus:ring-white focus:ring-offset-4 focus:ring-offset-primary">
-                    Cari Kerja Sekarang
-                </a>
-            </div>
-        </div>
-    </section>
 </main>
 
-<!-- Footer -->
 <footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 px-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-screen-2xl mx-auto">
-        <div class="text-slate-500 font-['Lexend'] text-sm tracking-wide uppercase font-semibold">© 2024 KARYA. Memberdayakan Kemampuan.</div>
+        <div class="text-slate-500 font-['Lexend'] text-sm tracking-wide uppercase font-semibold">© 2026 KARYA. Memberdayakan Kemampuan.</div>
         <div class="flex flex-wrap justify-center gap-8">
-            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold transition-colors focus:ring-2 focus:ring-amber-400 p-2" href="#">Pernyataan Aksesibilitas</a>
-            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold transition-colors focus:ring-2 focus:ring-amber-400 p-2" href="community_chat_karya/index.html">Forum Komunitas</a>
-            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold transition-colors focus:ring-2 focus:ring-amber-400 p-2" href="#">Hukum</a>
-            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold transition-colors focus:ring-2 focus:ring-amber-400 p-2" href="#">Kebijakan Privasi</a>
+            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="#">Pernyataan Aksesibilitas</a>
+            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="community_chat_karya/index.html">Forum Komunitas</a>
+            <a class="text-slate-500 hover:text-blue-900 font-['Lexend'] text-sm tracking-wide uppercase font-semibold" href="#">Kebijakan Privasi</a>
         </div>
     </div>
 </footer>
-
 </body>
 </html>
