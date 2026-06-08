@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA - Data Pelamar (Perusahaan)</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#001855",
+                        "primary-container": "#002a84",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#7796ff",
+                        "secondary": "#7c5800",
+                        "secondary-container": "#feb700",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#43474f",
+                        "outline": "#737780",
+                        "outline-variant": "#c3c6d1"
+                    },
+                    fontFamily: { sans: ["Lexend"] },
+                    borderRadius: { xl: "0.75rem", "2xl": "1rem", "3xl": "1.5rem" }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { background-color: #fcf9f8; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+            <div class="text-2xl font-black text-primary tracking-tighter">KARYA</div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-slate-600 font-medium hover:text-primary">Lowongan</a>
+                <a href="#" class="text-slate-600 font-medium hover:text-primary">Komunitas</a>
+                <a href="#" class="text-slate-600 font-medium hover:text-primary">Sumber Daya</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-primary">contrast</span></button>
+                <button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-primary">format_size</span></button>
+                <div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">business</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-sm border border-surface-container-high p-8">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-black text-primary tracking-tight">Data Pelamar</h1>
+                <p class="text-on-surface-variant mt-1">Kelola dan pantau pelamar yang mendaftar pada lowongan perusahaan Anda.</p>
+            </div>
+
+            <!-- Filter bar -->
+            <div class="flex flex-wrap gap-4 mb-8">
+                <div class="flex-1 min-w-[180px]">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Filter Lowongan</label>
+                    <select id="filterLowongan" class="w-full p-3 rounded-xl bg-surface-container-high border border-transparent focus:border-primary focus:ring-0">
+                        <option value="">Semua Lowongan</option>
+                        <option value="1">Frontend Developer (Fisik)</option>
+                        <option value="2">Admin Data Entry (Netra)</option>
+                        <option value="3">Customer Service (Rungu)</option>
+                    </select>
+                </div>
+                <div class="flex-1 min-w-[180px]">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Status Lamaran</label>
+                    <select id="filterStatus" class="w-full p-3 rounded-xl bg-surface-container-high border border-transparent focus:border-primary">
+                        <option value="">Semua</option>
+                        <option value="pending">Pending</option>
+                        <option value="review">Dalam Review</option>
+                        <option value="interview">Undang Interview</option>
+                        <option value="accepted">Diterima</option>
+                        <option value="rejected">Ditolak</option>
+                    </select>
+                </div>
+                <div class="flex-1 min-w-[200px]">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Cari Nama / Email</label>
+                    <input type="text" id="searchInput" placeholder="Ketik keyword..." class="w-full p-3 rounded-xl bg-surface-container-high border border-transparent focus:border-primary">
+                </div>
+                <div class="flex items-end">
+                    <button id="applyFilterBtn" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold hover:bg-primary/90 transition shadow-md">Terapkan Filter</button>
+                </div>
+            </div>
+
+            <!-- Tabel -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-surface-container-high rounded-xl">
+                        <tr class="border-b border-surface-container">
+                            <th class="p-4 font-bold text-primary">Nama</th>
+                            <th class="p-4 font-bold text-primary">Jenis Disabilitas</th>
+                            <th class="p-4 font-bold text-primary">Lowongan</th>
+                            <th class="p-4 font-bold text-primary">Tanggal Lamar</th>
+                            <th class="p-4 font-bold text-primary">Status</th>
+                            <th class="p-4 font-bold text-primary text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-between items-center mt-8">
+                <button id="prevPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50">Sebelumnya</button>
+                <span id="pageInfo" class="text-sm text-outline">Halaman 1 dari 1</span>
+                <button id="nextPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50">Selanjutnya</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Detail Pelamar (Solid, tanpa blur) -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-surface-container-high">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-black text-primary">Detail Pelamar</h3>
+                <button id="closeModalBtn" class="text-outline hover:text-primary text-3xl leading-none">&times;</button>
+            </div>
+            <div id="modalContent" class="space-y-3 text-on-surface-variant"></div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button id="updateStatusBtn" class="bg-secondary-container text-on-secondary px-5 py-2 rounded-xl font-bold hover:bg-secondary-container/80">Update Status</button>
+                <button id="closeModalFooterBtn" class="bg-surface-container-high px-5 py-2 rounded-xl hover:bg-surface-container">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-surface-container-low w-full py-8 px-6 mt-12 border-t border-surface-container">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
+            <div>© 2026 KARYA. Memberdayakan Kemampuan.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary">Pernyataan Aksesibilitas</a>
+                <a href="#" class="hover:text-primary">Kebijakan Privasi</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let pelamarData = [
+            { id:1, nama:"Budi Santoso", disabilitas:"Fisik (daksa)", lowongan:"Frontend Developer", tglLamaran:"2026-06-01", status:"pending", email:"budi@example.com", pendidikan:"S1 Informatika", cv:"#" },
+            { id:2, nama:"Siti Aminah", disabilitas:"Netra", lowongan:"Admin Data Entry", tglLamaran:"2026-06-03", status:"review", email:"siti@example.com", pendidikan:"D3 Administrasi", cv:"#" },
+            { id:3, nama:"Agus Prasetyo", disabilitas:"Rungu", lowongan:"Customer Service", tglLamaran:"2026-06-05", status:"interview", email:"agus@example.com", pendidikan:"S1 Psikologi", cv:"#" }
+        ];
+        let filteredData = [...pelamarData];
+        let currentPage = 1;
+        const rowsPerPage = 3;
+
+        function renderTable() {
+            const start = (currentPage-1)*rowsPerPage;
+            const pageData = filteredData.slice(start, start+rowsPerPage);
+            const tbody = document.getElementById('tableBody');
+            if(pageData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-outline">Tidak ada data</td></tr>';
+                document.getElementById('pageInfo').innerText = 'Halaman 0 dari 0';
+                document.getElementById('prevPage').disabled = true;
+                document.getElementById('nextPage').disabled = true;
+                return;
+            }
+            tbody.innerHTML = pageData.map(p => `
+                <tr class="border-b border-surface-container-high hover:bg-surface-container-low transition">
+                    <td class="p-4 font-medium">${p.nama}</td>
+                    <td class="p-4">${p.disabilitas}</td>
+                    <td class="p-4">${p.lowongan}</td>
+                    <td class="p-4">${p.tglLamaran}</td>
+                    <td class="p-4"><span class="px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(p.status)}">${p.status}</span></td>
+                    <td class="p-4 text-center"><button class="detailBtn text-primary font-bold" data-id="${p.id}">Detail</button></td>
+                </tr>
+            `).join('');
+            const totalPages = Math.ceil(filteredData.length/rowsPerPage);
+            document.getElementById('pageInfo').innerText = `Halaman ${currentPage} dari ${totalPages||1}`;
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages || filteredData.length === 0;
+        }
+
+        function getStatusClass(status) {
+            switch(status){
+                case 'pending': return 'bg-yellow-100 text-yellow-800';
+                case 'review': return 'bg-blue-100 text-blue-800';
+                case 'interview': return 'bg-purple-100 text-purple-800';
+                case 'accepted': return 'bg-green-100 text-green-800';
+                case 'rejected': return 'bg-red-100 text-red-800';
+                default: return 'bg-gray-100';
+            }
+        }
+
+        function applyFilters() {
+            const lowongan = document.getElementById('filterLowongan').value;
+            const status = document.getElementById('filterStatus').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            filteredData = pelamarData.filter(p => {
+                let matchLowongan = true;
+                if(lowongan === '1') matchLowongan = p.lowongan === 'Frontend Developer';
+                else if(lowongan === '2') matchLowongan = p.lowongan === 'Admin Data Entry';
+                else if(lowongan === '3') matchLowongan = p.lowongan === 'Customer Service';
+                let matchStatus = status ? p.status === status : true;
+                let matchSearch = search ? p.nama.toLowerCase().includes(search) || p.email.toLowerCase().includes(search) : true;
+                return matchLowongan && matchStatus && matchSearch;
+            });
+            currentPage = 1;
+            renderTable();
+        }
+
+        let currentPelamarId = null;
+        function showDetail(id) {
+            const pelamar = pelamarData.find(p => p.id == id);
+            if(!pelamar) return;
+            currentPelamarId = id;
+            const modal = document.getElementById('detailModal');
+            document.getElementById('modalContent').innerHTML = `
+                <p><strong>Nama:</strong> ${pelamar.nama}</p>
+                <p><strong>Email:</strong> ${pelamar.email}</p>
+                <p><strong>Disabilitas:</strong> ${pelamar.disabilitas}</p>
+                <p><strong>Pendidikan:</strong> ${pelamar.pendidikan}</p>
+                <p><strong>Lowongan:</strong> ${pelamar.lowongan}</p>
+                <p><strong>Tanggal Lamar:</strong> ${pelamar.tglLamaran}</p>
+                <p><strong>Status:</strong> 
+                    <select id="statusSelect" class="ml-2 p-1 rounded border border-outline-variant bg-white">
+                        <option value="pending" ${pelamar.status==='pending'?'selected':''}>Pending</option>
+                        <option value="review" ${pelamar.status==='review'?'selected':''}>Dalam Review</option>
+                        <option value="interview" ${pelamar.status==='interview'?'selected':''}>Undang Interview</option>
+                        <option value="accepted" ${pelamar.status==='accepted'?'selected':''}>Diterima</option>
+                        <option value="rejected" ${pelamar.status==='rejected'?'selected':''}>Ditolak</option>
+                    </select>
+                </p>
+                <p><strong>CV:</strong> <a href="${pelamar.cv}" target="_blank" class="text-primary underline">Lihat CV</a></p>
+            `;
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+        }
+
+        function updateStatus() {
+            const newStatus = document.getElementById('statusSelect').value;
+            const index = pelamarData.findIndex(p => p.id == currentPelamarId);
+            if(index !== -1) {
+                pelamarData[index].status = newStatus;
+                applyFilters();
+            }
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        document.getElementById('applyFilterBtn').addEventListener('click', applyFilters);
+        document.getElementById('prevPage').addEventListener('click', () => { if(currentPage>1){ currentPage--; renderTable(); } });
+        document.getElementById('nextPage').addEventListener('click', () => { if(currentPage < Math.ceil(filteredData.length/rowsPerPage)){ currentPage++; renderTable(); } });
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+        });
+        document.getElementById('closeModalFooterBtn').addEventListener('click', () => {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+        });
+        document.getElementById('updateStatusBtn').addEventListener('click', updateStatus);
+        document.getElementById('tableBody').addEventListener('click', (e) => {
+            if(e.target.classList.contains('detailBtn')) {
+                showDetail(e.target.getAttribute('data-id'));
+            }
+        });
+        applyFilters();
+    </script>
+</body>
+</html>
