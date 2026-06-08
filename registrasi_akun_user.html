@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA - Registrasi Akun User (Admin)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-2xl font-bold text-blue-800">Sistem KARYA</h1>
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Admin Panel</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700">Admin: Elang Febryan</span>
+                <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Registrasi Akun Baru</h2>
+            <p class="text-gray-600 mb-6">Admin dapat mendaftarkan akun untuk Penyandang Disabilitas atau Perusahaan baru.</p>
+
+            <form id="form-registrasi">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Role Selection -->
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Role <span class="text-red-500">*</span></label>
+                        <div class="flex space-x-6">
+                            <label class="inline-flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="role" value="penyandang" class="form-radio text-blue-600" checked> 
+                                <span class="ml-2">🧑‍🦽 Penyandang Disabilitas</span>
+                            </label>
+                            <label class="inline-flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="role" value="perusahaan" class="form-radio text-blue-600"> 
+                                <span class="ml-2">🏢 Perusahaan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Data Dasar -->
+                    <div>
+                        <label for="reg_nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="reg_nama" name="nama" required class="w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="reg_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="reg_email" name="email" required class="w-full border border-gray-300 rounded-md p-2">
+                    </div>
+                    <div>
+                        <label for="reg_password" class="block text-sm font-medium text-gray-700 mb-1">Password <span class="text-red-500">*</span></label>
+                        <input type="password" id="reg_password" name="password" required class="w-full border border-gray-300 rounded-md p-2">
+                        <p class="text-xs text-gray-500 mt-1">Minimal 6 karakter</p>
+                    </div>
+                    <div>
+                        <label for="reg_konfirmasi" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password <span class="text-red-500">*</span></label>
+                        <input type="password" id="reg_konfirmasi" required class="w-full border border-gray-300 rounded-md p-2">
+                    </div>
+
+                    <!-- Field untuk Penyandang Disabilitas -->
+                    <div id="field_penyandang" class="md:col-span-2 space-y-4">
+                        <div>
+                            <label for="reg_jenis_disabilitas" class="block text-sm font-medium text-gray-700 mb-1">Jenis Disabilitas <span class="text-red-500">*</span></label>
+                            <select id="reg_jenis_disabilitas" class="w-full border border-gray-300 rounded-md p-2">
+                                <option value="">Pilih jenis disabilitas</option>
+                                <option value="Fisik (daksa)">Fisik (daksa)</option>
+                                <option value="Netra">Netra</option>
+                                <option value="Rungu">Rungu</option>
+                                <option value="Mental">Mental</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Field untuk Perusahaan -->
+                    <div id="field_perusahaan" class="md:col-span-2 hidden">
+                        <div>
+                            <label for="reg_nama_perusahaan" class="block text-sm font-medium text-gray-700 mb-1">Nama Perusahaan <span class="text-red-500">*</span></label>
+                            <input type="text" id="reg_nama_perusahaan" class="w-full border border-gray-300 rounded-md p-2">
+                        </div>
+                    </div>
+
+                    <!-- Field Umum -->
+                    <div>
+                        <label for="reg_telepon" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
+                        <input type="tel" id="reg_telepon" class="w-full border border-gray-300 rounded-md p-2">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="reg_alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+                        <textarea id="reg_alamat" rows="2" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-8">
+                    <button type="reset" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Reset</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 focus:ring-2">Daftarkan Akun</button>
+                </div>
+            </form>
+
+            <!-- Daftar Akun Terbaru -->
+            <div class="mt-10">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">📋 Akun yang baru didaftarkan</h3>
+                <div id="akun-terbaru-list" class="space-y-2">
+                    <div class="text-center py-8 text-gray-500">Belum ada akun yang didaftarkan</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const akunList = [];
+
+        function toggleRoleFields() {
+            const role = document.querySelector('input[name="role"]:checked').value;
+            const fieldPenyandang = document.getElementById('field_penyandang');
+            const fieldPerusahaan = document.getElementById('field_perusahaan');
+            const jenisDisabilitas = document.getElementById('reg_jenis_disabilitas');
+            const namaPerusahaan = document.getElementById('reg_nama_perusahaan');
+
+            if (role === 'penyandang') {
+                fieldPenyandang.classList.remove('hidden');
+                fieldPerusahaan.classList.add('hidden');
+                jenisDisabilitas.setAttribute('required', 'required');
+                namaPerusahaan.removeAttribute('required');
+            } else {
+                fieldPenyandang.classList.add('hidden');
+                fieldPerusahaan.classList.remove('hidden');
+                jenisDisabilitas.removeAttribute('required');
+                namaPerusahaan.setAttribute('required', 'required');
+            }
+        }
+
+        function updateAkunList() {
+            const container = document.getElementById('akun-terbaru-list');
+            if (akunList.length === 0) {
+                container.innerHTML = '<div class="text-center py-8 text-gray-500">Belum ada akun yang didaftarkan</div>';
+                return;
+            }
+            container.innerHTML = akunList.map(akun => `
+                <div class="bg-gray-50 p-4 rounded-lg flex justify-between items-center hover:shadow transition">
+                    <div>
+                        <p class="font-semibold text-gray-800">${akun.nama}</p>
+                        <p class="text-sm text-gray-600">${akun.email} • ${akun.role}</p>
+                        ${akun.detail ? `<p class="text-xs text-gray-500 mt-1">${akun.detail}</p>` : ''}
+                    </div>
+                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Terdaftar</span>
+                </div>
+            `).join('');
+        }
+
+        document.querySelectorAll('input[name="role"]').forEach(radio => {
+            radio.addEventListener('change', toggleRoleFields);
+        });
+
+        document.getElementById('form-registrasi').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const password = document.getElementById('reg_password').value;
+            const konfirmasi = document.getElementById('reg_konfirmasi').value;
+            
+            if (password !== konfirmasi) {
+                alert('❌ Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+            if (password.length < 6) {
+                alert('❌ Password minimal 6 karakter!');
+                return;
+            }
+
+            const role = document.querySelector('input[name="role"]:checked').value;
+            const nama = document.getElementById('reg_nama').value;
+            const email = document.getElementById('reg_email').value;
+            
+            if (!nama || !email) {
+                alert('❌ Nama dan Email wajib diisi!');
+                return;
+            }
+
+            let detail = '';
+            if (role === 'penyandang') {
+                const jenis = document.getElementById('reg_jenis_disabilitas').value;
+                if (!jenis) {
+                    alert('❌ Jenis disabilitas wajib dipilih!');
+                    return;
+                }
+                detail = `Jenis Disabilitas: ${jenis}`;
+            } else {
+                const namaPerusahaan = document.getElementById('reg_nama_perusahaan').value;
+                if (!namaPerusahaan) {
+                    alert('❌ Nama perusahaan wajib diisi!');
+                    return;
+                }
+                detail = `Nama Perusahaan: ${namaPerusahaan}`;
+            }
+
+            const newAkun = {
+                id: Date.now(),
+                nama: nama,
+                email: email,
+                role: role === 'penyandang' ? 'Penyandang Disabilitas' : 'Perusahaan',
+                telepon: document.getElementById('reg_telepon').value,
+                alamat: document.getElementById('reg_alamat').value,
+                detail: detail,
+                createdAt: new Date().toLocaleString()
+            };
+
+            akunList.unshift(newAkun);
+            updateAkunList();
+            
+            // Reset form
+            e.target.reset();
+            toggleRoleFields();
+            
+            alert(`✅ Akun ${nama} (${newAkun.role}) berhasil didaftarkan!\\n\\nEmail: ${email}\\nPassword: ${password}\\n\\nSilakan sampaikan kredensial ini kepada user.`);
+        });
+
+        toggleRoleFields();
+    </script>
+</body>
+</html>
