@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA - Mendaftar Lowongan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        .step-active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .step-completed {
+            background-color: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-800">Sistem KARYA</h1>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700"><i class="fas fa-user-circle mr-1"></i> Alya Yumna</span>
+                <a href="penyandang-cari-lowongan.html" class="text-blue-600 hover:text-blue-800">
+                    <i class="fas fa-arrow-left mr-1"></i> Kembali ke Pencarian
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Progress Step -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div class="flex-1 text-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center mx-auto mb-2" id="step1-indicator">1</div>
+                    <span class="text-sm text-gray-600">Detail Lowongan</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex-1 text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2" id="step2-indicator">2</div>
+                    <span class="text-sm text-gray-600">Isi Data Diri</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex-1 text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2" id="step3-indicator">3</div>
+                    <span class="text-sm text-gray-600">Upload Dokumen</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex-1 text-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2" id="step4-indicator">4</div>
+                    <span class="text-sm text-gray-600">Konfirmasi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1: Detail Lowongan -->
+        <div id="step1" class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Detail Lowongan</h2>
+            <div id="detail-lowongan" class="bg-gray-50 rounded-lg p-4 mb-4">
+                <!-- Data lowongan akan diisi JavaScript -->
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fas fa-spinner fa-spin text-2xl"></i>
+                    <p>Memuat data lowongan...</p>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <button id="next-step1" class="bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-800">
+                    Selanjutnya <i class="fas fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Isi Data Diri (Pre-filled dari profil) -->
+        <div id="step2" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Data Diri Pelamar</h2>
+            <form id="form-data-diri">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                        <input type="text" id="nama" name="nama" required class="w-full border border-gray-300 rounded-md p-2 bg-gray-100" readonly>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-md p-2 bg-gray-100" readonly>
+                    </div>
+                    <div>
+                        <label for="telepon" class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon <span class="text-red-500">*</span></label>
+                        <input type="tel" id="telepon" name="telepon" required class="w-full border border-gray-300 rounded-md p-2">
+                    </div>
+                    <div>
+                        <label for="jenis_disabilitas" class="block text-sm font-medium text-gray-700 mb-1">Jenis Disabilitas <span class="text-red-500">*</span></label>
+                        <input type="text" id="jenis_disabilitas" name="jenis_disabilitas" class="w-full border border-gray-300 rounded-md p-2 bg-gray-100" readonly>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+                        <textarea id="alamat" name="alamat" rows="2" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="pendidikan" class="block text-sm font-medium text-gray-700 mb-1">Pendidikan Terakhir</label>
+                        <input type="text" id="pendidikan" name="pendidikan" class="w-full border border-gray-300 rounded-md p-2">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="pengalaman" class="block text-sm font-medium text-gray-700 mb-1">Pengalaman Kerja</label>
+                        <textarea id="pengalaman" name="pengalaman" rows="3" class="w-full border border-gray-300 rounded-md p-2" placeholder="Ceritakan pengalaman kerja Anda (jika ada)"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-6">
+                    <button type="button" id="prev-step2" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-arrow-left mr-1"></i> Sebelumnya
+                    </button>
+                    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-800">
+                        Selanjutnya <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Upload Dokumen -->
+        <div id="step3" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Upload Dokumen Pendukung</h2>
+            <form id="form-dokumen">
+                <div class="space-y-4">
+                    <div>
+                        <label for="cv" class="block text-sm font-medium text-gray-700 mb-1">CV / Resume <span class="text-red-500">*</span></label>
+                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required class="w-full text-sm text-gray-500 file:mr-2 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <p class="text-xs text-gray-500 mt-1">Format PDF, DOC, DOCX (maks 2MB)</p>
+                    </div>
+                    <div>
+                        <label for="ijazah" class="block text-sm font-medium text-gray-700 mb-1">Ijazah / Sertifikat Pendukung</label>
+                        <input type="file" id="ijazah" name="ijazah" accept=".pdf,.jpg,.png" class="w-full text-sm text-gray-500 file:mr-2 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <p class="text-xs text-gray-500 mt-1">Format PDF, JPG, PNG (maks 2MB)</p>
+                    </div>
+                    <div>
+                        <label for="surat_keterangan" class="block text-sm font-medium text-gray-700 mb-1">Surat Keterangan Disabilitas (opsional)</label>
+                        <input type="file" id="surat_keterangan" name="surat_keterangan" accept=".pdf,.jpg,.png" class="w-full text-sm text-gray-500 file:mr-2 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    </div>
+                </div>
+                <div class="flex justify-between mt-6">
+                    <button type="button" id="prev-step3" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-arrow-left mr-1"></i> Sebelumnya
+                    </button>
+                    <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-800">
+                        Selanjutnya <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 4: Konfirmasi dan Submit -->
+        <div id="step4" class="bg-white rounded-lg shadow-md p-6 hidden">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Konfirmasi Pendaftaran</h2>
+            <div id="konfirmasi-data" class="bg-gray-50 rounded-lg p-4 mb-4">
+                <!-- Data konfirmasi akan diisi JavaScript -->
+            </div>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                <div class="flex items-center">
+                    <i class="fas fa-info-circle text-yellow-600 mr-2"></i>
+                    <p class="text-sm text-yellow-700">Pastikan semua data yang Anda masukkan sudah benar. Pendaftaran tidak dapat diubah setelah dikirim.</p>
+                </div>
+            </div>
+            <div class="flex justify-between">
+                <button id="prev-step4" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                    <i class="fas fa-arrow-left mr-1"></i> Sebelumnya
+                </button>
+                <button id="submit-daftar" class="bg-green-700 text-white px-6 py-2 rounded-md hover:bg-green-800">
+                    <i class="fas fa-paper-plane mr-1"></i> Kirim Pendaftaran
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Sukses -->
+        <div id="success-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <i class="fas fa-check text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Pendaftaran Berhasil!</h3>
+                <p class="text-gray-500 mb-4">Lamaran Anda telah terkirim. Perusahaan akan menghubungi Anda melalui email.</p>
+                <button id="close-modal" class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800">
+                    Kembali ke Pencarian Lowongan
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Data profil (simulasi dari database)
+        const userProfil = {
+            nama: "Alya Yumna Atiqoh Wibowo",
+            email: "alya.yumna@example.com",
+            telepon: "081234567890",
+            jenis_disabilitas: "Fisik",
+            alamat: "Jl. Merdeka No. 45, Surakarta",
+            pendidikan: "S1 Sistem Informasi - UNS",
+            pengalaman: "Magang di PT. Teknologi Inklusif sebagai Frontend Developer (2025)"
+        };
+
+        let lowonganDipilih = null;
+        let currentStep = 1;
+        let uploadedFiles = {
+            cv: null,
+            ijazah: null,
+            surat_keterangan: null
+        };
+
+        // Load lowongan dari localStorage
+        function loadLowonganDetail() {
+            const stored = localStorage.getItem('lowonganDipilih');
+            if (!stored) {
+                // Jika tidak ada, redirect ke halaman pencarian
+                window.location.href = 'penyandang-cari-lowongan.html';
+                return;
+            }
+            
+            const lowonganData = JSON.parse(stored);
+            // Cari data lowongan lengkap (simulasi dari database lowongan)
+            const semuaLowongan = [
+                { id: 1, judul: "Frontend Developer", perusahaan: "PT. Teknologi Inklusif", lokasi: "Surakarta", jenis_disabilitas: "Fisik", deskripsi: "Mengembangkan antarmuka web yang aksesibel. WFH 2x seminggu.", tgl_posting: "2026-06-01", gaji: "Rp 4.500.000 - Rp 6.000.000", status: "dibuka" },
+                { id: 2, judul: "Admin Data Entry", perusahaan: "CV. Maju Bersama", lokasi: "Remote", jenis_disabilitas: "Netra", deskripsi: "Menginput data dengan software screen reader friendly.", tgl_posting: "2026-06-03", gaji: "Rp 3.500.000 - Rp 4.500.000", status: "dibuka" },
+                { id: 3, judul: "Customer Service", perusahaan: "PT. Layanan Ramah", lokasi: "Jakarta", jenis_disabilitas: "Rungu", deskripsi: "Melayani pelanggan melalui chat dan email.", tgl_posting: "2026-06-05", gaji: "Rp 4.000.000 - Rp 5.500.000", status: "dibuka" },
+                { id: 4, judul: "Graphic Designer", perusahaan: "Studio Kreatif Inklusi", lokasi: "Bandung", jenis_disabilitas: "Fisik", deskripsi: "Desain grafis untuk konten media sosial dan website.", tgl_posting: "2026-06-07", gaji: "Rp 5.000.000 - Rp 7.000.000", status: "dibuka" }
+            ];
+            
+            lowonganDipilih = semuaLowongan.find(l => l.id == lowonganData.id);
+            if (!lowonganDipilih) {
+                alert("Lowongan tidak ditemukan");
+                window.location.href = 'penyandang-cari-lowongan.html';
+                return;
+            }
+            
+            // Tampilkan detail lowongan
+            const container = document.getElementById('detail-lowongan');
+            container.innerHTML = `
+                <h3 class="text-lg font-bold text-gray-800 mb-2">${lowonganDipilih.judul}</h3>
+                <p class="text-gray-600 mb-1"><i class="fas fa-building mr-2 text-gray-400"></i>${lowonganDipilih.perusahaan
