@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA - Cari Lowongan</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#001855",
+                        "primary-container": "#002a84",
+                        "on-primary": "#ffffff",
+                        "secondary": "#7c5800",
+                        "secondary-container": "#feb700",
+                        "surface": "#fcf9f8",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#43474f",
+                        "outline": "#737780"
+                    },
+                    fontFamily: { sans: ["Lexend"] },
+                    borderRadius: { xl: "0.75rem", "2xl": "1rem", "3xl": "1.5rem" }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { background-color: #fcf9f8; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <!-- Navbar Solid -->
+    <nav class="fixed top-0 w-full z-50 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+        <div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+            <div class="text-2xl font-black text-primary tracking-tighter">KARYA</div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#" class="text-blue-900 font-bold border-b-2 border-secondary-container pb-1">Lowongan</a>
+                <a href="#" class="text-slate-600 font-medium hover:text-primary">Komunitas</a>
+                <a href="#" class="text-slate-600 font-medium hover:text-primary">Sumber Daya</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-primary">contrast</span></button>
+                <button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-primary">format_size</span></button>
+                <a href="penyandang-profil.html" class="p-2 hover:bg-surface-container-high rounded-full">
+                    <span class="material-symbols-outlined text-primary">account_circle</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-sm border border-surface-container-high p-8">
+            <h1 class="text-3xl font-black text-primary tracking-tight mb-2">Cari Lowongan Kerja</h1>
+            <p class="text-on-surface-variant mb-8">Temukan lowongan yang sesuai dengan kebutuhan dan kemampuan Anda.</p>
+
+            <!-- Pencarian dan Filter -->
+            <div class="flex flex-wrap gap-4 mb-10">
+                <div class="flex-1 min-w-[200px]">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Kata Kunci</label>
+                    <input type="text" id="searchLowongan" placeholder="Posisi, perusahaan, atau kata kunci..." class="w-full p-3 rounded-xl bg-surface-container-high border border-transparent focus:border-primary">
+                </div>
+                <div class="w-48">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Jenis Disabilitas</label>
+                    <select id="filterJenis" class="w-full p-3 rounded-xl bg-surface-container-high border border-transparent focus:border-primary">
+                        <option value="">Semua</option>
+                        <option value="Fisik">Fisik (daksa)</option>
+                        <option value="Netra">Netra</option>
+                        <option value="Rungu">Rungu</option>
+                        <option value="Mental">Mental</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="btnCari" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold hover:bg-primary/90 shadow-md">Cari</button>
+                </div>
+            </div>
+
+            <!-- Hasil Pencarian (Grid Card) -->
+            <div id="lowonganList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Data dinamis dari JS -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-between items-center mt-10">
+                <button id="prevPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50">Sebelumnya</button>
+                <span id="pageInfo" class="text-sm text-outline">Halaman 1 dari 1</span>
+                <button id="nextPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50">Selanjutnya</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Detail & Lamar (Solid, tanpa blur) -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-surface-container-high">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-black text-primary">Detail Lowongan</h3>
+                <button id="closeModal" class="text-outline hover:text-primary text-3xl leading-none">&times;</button>
+            </div>
+            <div id="modalContent" class="space-y-3 text-on-surface-variant"></div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button id="lamarBtn" class="bg-secondary-container text-on-secondary px-5 py-2 rounded-xl font-bold hover:bg-secondary-container/80">Lamar Sekarang</button>
+                <button id="closeModalFooter" class="bg-surface-container-high px-5 py-2 rounded-xl hover:bg-surface-container">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-surface-container-low w-full py-8 px-6 mt-12 border-t border-surface-container">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
+            <div>© 2026 KARYA. Memberdayakan Kemampuan.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-primary">Pernyataan Aksesibilitas</a>
+                <a href="#" class="hover:text-primary">Kebijakan Privasi</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data lowongan simulasi
+        let lowonganData = [
+            { id: 1, judul: "Frontend Developer", perusahaan: "PT. Teknologi Inklusif", lokasi: "Surakarta", jenis_disabilitas: "Fisik", deskripsi: "Membangun antarmuka web yang aksesibel. WFH 2 hari/minggu.", tgl_posting: "2026-06-01" },
+            { id: 2, judul: "Admin Data Entry", perusahaan: "PT. Maju Jaya", lokasi: "Jakarta", jenis_disabilitas: "Netra", deskripsi: "Menginput data dengan software screen reader. Pelatihan disediakan.", tgl_posting: "2026-06-03" },
+            { id: 3, judul: "Customer Service", perusahaan: "Bank Inklusif", lokasi: "Bandung", jenis_disabilitas: "Rungu", deskripsi: "Melayani chat dan email, dilengkapi dengan aplikasi SIBI.", tgl_posting: "2026-06-05" },
+            { id: 4, judul: "UI/UX Designer", perusahaan: "Design for All", lokasi: "Yogyakarta", jenis_disabilitas: "Fisik", deskripsi: "Merancang pengalaman pengguna yang inklusif.", tgl_posting: "2026-06-07" }
+        ];
+
+        let currentPage = 1;
+        const rowsPerPage = 2;
+        let filteredData = [...lowonganData];
+
+        function renderLowongan() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filteredData.slice(start, end);
+            const container = document.getElementById('lowonganList');
+            if (pageData.length === 0) {
+                container.innerHTML = '<div class="col-span-2 text-center py-8 text-outline">Tidak ada lowongan yang ditemukan.</div>';
+                document.getElementById('pageInfo').innerText = 'Halaman 0 dari 0';
+                document.getElementById('prevPage').disabled = true;
+                document.getElementById('nextPage').disabled = true;
+                return;
+            }
+            container.innerHTML = pageData.map(low => `
+                <div class="border border-surface-container-high rounded-2xl p-5 shadow-sm hover:shadow-md transition bg-white">
+                    <h3 class="text-xl font-bold text-primary">${low.judul}</h3>
+                    <p class="text-on-surface-variant text-sm">${low.perusahaan} • ${low.lokasi}</p>
+                    <p class="text-outline text-xs mt-1">Diposting: ${low.tgl_posting}</p>
+                    <p class="mt-3 text-on-surface-variant line-clamp-2">${low.deskripsi}</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="bg-primary-fixed text-primary text-xs px-3 py-1 rounded-full font-bold">Disabilitas ${low.jenis_disabilitas}</span>
+                        <button class="detailBtn text-primary font-bold hover:underline" data-id="${low.id}">Lihat Detail →</button>
+                    </div>
+                </div>
+            `).join('');
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            document.getElementById('pageInfo').innerText = `Halaman ${currentPage} dari ${totalPages || 1}`;
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages || filteredData.length === 0;
+        }
+
+        function applyFilter() {
+            const keyword = document.getElementById('searchLowongan').value.toLowerCase();
+            const jenis = document.getElementById('filterJenis').value;
+            filteredData = lowonganData.filter(low => {
+                const matchKeyword = keyword === '' || low.judul.toLowerCase().includes(keyword) || low.perusahaan.toLowerCase().includes(keyword);
+                const matchJenis = jenis === '' || low.jenis_disabilitas === jenis;
+                return matchKeyword && matchJenis;
+            });
+            currentPage = 1;
+            renderLowongan();
+        }
+
+        let currentLowonganId = null;
+        function showDetailModal(lowonganId) {
+            const low = lowonganData.find(l => l.id == lowonganId);
+            if (!low) return;
+            currentLowonganId = lowonganId;
+            const modal = document.getElementById('detailModal');
+            document.getElementById('modalContent').innerHTML = `
+                <p><strong>Judul:</strong> ${low.judul}</p>
+                <p><strong>Perusahaan:</strong> ${low.perusahaan}</p>
+                <p><strong>Lokasi:</strong> ${low.lokasi}</p>
+                <p><strong>Jenis Disabilitas:</strong> ${low.jenis_disabilitas}</p>
+                <p><strong>Deskripsi Lengkap:</strong><br>${low.deskripsi}</p>
+                <p><strong>Tanggal Posting:</strong> ${low.tgl_posting}</p>
+            `;
+            modal.classList.remove('hidden');
+            modal.style.display = 'flex';
+        }
+
+        function lamarLowongan() {
+            if (currentLowonganId) {
+                alert(`Anda telah melamar lowongan ID ${currentLowonganId}. Pendaftaran berhasil.`);
+                document.getElementById('detailModal').classList.add('hidden');
+                document.getElementById('detailModal').style.display = 'none';
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('btnCari').addEventListener('click', applyFilter);
+        document.getElementById('prevPage').addEventListener('click', () => { if(currentPage > 1) { currentPage--; renderLowongan(); } });
+        document.getElementById('nextPage').addEventListener('click', () => { if(currentPage < Math.ceil(filteredData.length / rowsPerPage)) { currentPage++; renderLowongan(); } });
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+        });
+        document.getElementById('closeModalFooter').addEventListener('click', () => {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').style.display = 'none';
+        });
+        document.getElementById('lamarBtn').addEventListener('click', lamarLowongan);
+
+        document.getElementById('lowonganList').addEventListener('click', (e) => {
+            if (e.target.classList.contains('detailBtn')) {
+                const id = e.target.getAttribute('data-id');
+                showDetailModal(id);
+            }
+        });
+
+        // Inisialisasi
+        applyFilter();
+    </script>
+</body>
+</html>
