@@ -3,277 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KARYA - Data Pelamar (Perusahaan)</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#001855",
-                        "primary-container": "#002a84",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#7796ff",
-                        "secondary": "#7c5800",
-                        "secondary-container": "#feb700",
-                        "on-secondary": "#ffffff",
-                        "surface": "#fcf9f8",
-                        "surface-container-low": "#f6f3f2",
-                        "surface-container-high": "#eae7e7",
-                        "surface-container-highest": "#e5e2e1",
-                        "on-surface": "#1b1c1c",
-                        "on-surface-variant": "#43474f",
-                        "outline": "#737780",
-                        "outline-variant": "#c3c6d1"
-                    },
-                    fontFamily: { sans: ["Lexend"] },
-                    borderRadius: { xl: "0.75rem", "2xl": "1rem", "3xl": "1.5rem" }
-                }
-            }
-        }
-    </script>
+    <title>KARYA - Kelola Lowongan (Perusahaan)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        body { background-color: #fcf9f8; }
+        :focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+        .modal-transition {
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
-<body class="bg-surface text-on-surface">
+<body class="bg-gray-100 font-sans">
 
-    <!-- Navbar (sama seperti file KARYA lain) -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,22,79,0.08)]">
-        <div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
-            <div class="text-2xl font-black text-primary tracking-tighter">KARYA</div>
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#" class="text-slate-600 font-medium hover:text-primary">Lowongan</a>
-                <a href="#" class="text-slate-600 font-medium hover:text-primary">Komunitas</a>
-                <a href="#" class="text-slate-600 font-medium hover:text-primary">Sumber Daya</a>
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <h1 class="text-2xl font-bold text-blue-800">Sistem KARYA</h1>
+                <span class="text-sm text-gray-500">Perusahaan</span>
             </div>
-            <div class="flex items-center gap-4">
-                <button class="p-2 hover:scale-105"><span class="material-symbols-outlined text-primary">contrast</span></button>
-                <button class="p-2 hover:scale-105"><span class="material-symbols-outlined text-primary">format_size</span></button>
-                <div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden flex items-center justify-center">
-                    <span class="material-symbols-outlined text-primary">business</span>
-                </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700">PT. Maju Bersama</span>
+                <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 focus:ring-2" aria-label="Logout">
+                    <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
-        <div class="bg-surface-container-lowest rounded-3xl shadow-sm p-8">
-            <!-- Header -->
-            <div class="mb-8">
-                <h1 class="text-3xl font-black text-primary tracking-tight">Data Pelamar</h1>
-                <p class="text-on-surface-variant mt-1">Kelola dan pantau pelamar yang mendaftar pada lowongan perusahaan Anda.</p>
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <!-- Header dengan Tombol Tambah -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl font-semibold text-gray-800">Kelola Lowongan Pekerjaan</h2>
+                    <p class="text-gray-600 mt-1">Buat, edit, atau hapus lowongan pekerjaan perusahaan Anda</p>
+                </div>
+                <button id="btn-tambah" class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800 focus:ring-2 flex items-center gap-2">
+                    <i class="fas fa-plus"></i> Buat Lowongan Baru
+                </button>
             </div>
 
-            <!-- Filter bar -->
-            <div class="flex flex-wrap gap-4 mb-8">
-                <div class="flex-1 min-w-[180px]">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Filter Lowongan</label>
-                    <select id="filterLowongan" class="w-full p-3 rounded-xl bg-surface-container-high border-none focus:ring-2 focus:ring-secondary-container">
-                        <option value="">Semua Lowongan</option>
-                        <option value="1">Frontend Developer (Disabilitas Fisik)</option>
-                        <option value="2">Admin Data Entry (Netra)</option>
-                        <option value="3">Customer Service (Rungu)</option>
-                    </select>
-                </div>
-                <div class="flex-1 min-w-[180px]">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Status Lamaran</label>
-                    <select id="filterStatus" class="w-full p-3 rounded-xl bg-surface-container-high">
-                        <option value="">Semua</option>
-                        <option value="pending">Pending</option>
-                        <option value="review">Dalam Review</option>
-                        <option value="interview">Undang Interview</option>
-                        <option value="accepted">Diterima</option>
-                        <option value="rejected">Ditolak</option>
-                    </select>
-                </div>
+            <!-- Filter dan Pencarian -->
+            <div class="flex flex-wrap gap-4 mb-6">
                 <div class="flex-1 min-w-[200px]">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-outline mb-1">Cari Nama / Email</label>
-                    <input type="text" id="searchInput" placeholder="Ketik keyword..." class="w-full p-3 rounded-xl bg-surface-container-high border-none focus:ring-2 focus:ring-secondary-container">
+                    <label for="filter-status" class="block text-sm font-medium text-gray-700 mb-1">Filter Status</label>
+                    <select id="filter-status" class="w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500">
+                        <option value="">Semua Status</option>
+                        <option value="aktif">Aktif</option>
+                        <option value="nonaktif">Nonaktif</option>
+                        <option value="ditutup">Ditutup</option>
+                    </select>
+                </div>
+                <div class="flex-1 min-w-[250px]">
+                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari Lowongan</label>
+                    <input type="text" id="search" placeholder="Cari judul lowongan..." class="w-full border border-gray-300 rounded-md p-2">
                 </div>
                 <div class="flex items-end">
-                    <button id="applyFilterBtn" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold hover:scale-[1.02] transition-all shadow-md">Terapkan Filter</button>
+                    <button id="btn-filter" class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800">Terapkan Filter</button>
                 </div>
             </div>
 
-            <!-- Tabel Pelamar -->
+            <!-- Tabel Lowongan -->
             <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead class="bg-surface-container-high rounded-xl">
-                        <tr class="border-b-2 border-surface-container">
-                            <th class="p-4 font-bold text-primary">Nama</th>
-                            <th class="p-4 font-bold text-primary">Jenis Disabilitas</th>
-                            <th class="p-4 font-bold text-primary">Lowongan</th>
-                            <th class="p-4 font-bold text-primary">Tanggal Lamar</th>
-                            <th class="p-4 font-bold text-primary">Status</th>
-                            <th class="p-4 font-bold text-primary text-center">Aksi</th>
+                <table class="min-w-full bg-white border border-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">No</th>
+                            <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Judul Lowongan</th>
+                            <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Deskripsi</th>
+                            <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Status</th>
+                            <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Tanggal Dibuat</th>
+                            <th class="py-3 px-4 border-b text-center text-sm font-semibold text-gray-700">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody"></tbody>
+                    <tbody id="table-body">
+                        <!-- Data akan diisi JavaScript -->
+                    </tbody>
                 </table>
             </div>
 
-            <!-- Pagination -->
-            <div class="flex justify-between items-center mt-8">
-                <button id="prevPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50" disabled>Sebelumnya</button>
-                <span id="pageInfo" class="text-sm text-outline">Halaman 1 dari 1</span>
-                <button id="nextPage" class="px-4 py-2 bg-surface-container-high rounded-xl disabled:opacity-50">Selanjutnya</button>
+            <!-- Paginasi -->
+            <div class="flex justify-between items-center mt-6">
+                <button id="prev-page" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50" disabled>
+                    <i class="fas fa-chevron-left"></i> Sebelumnya
+                </button>
+                <span id="page-info" class="text-sm text-gray-600">Halaman 1 dari 1</span>
+                <button id="next-page" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50">
+                    Selanjutnya <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </main>
 
-    <!-- Modal Detail Pelamar -->
-    <div id="detailModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-        <div class="bg-surface-container-lowest rounded-3xl max-w-lg w-full p-6 shadow-2xl">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-2xl font-black text-primary">Detail Pelamar</h3>
-                <button id="closeModalBtn" class="text-outline hover:text-primary">&times;</button>
+    <!-- Modal Tambah/Edit Lowongan -->
+    <div id="modal-lowongan" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50 modal-transition">
+        <div class="relative top-10 mx-auto p-5 border w-11/12 md:w-2/3 lg:w-1/2 shadow-lg rounded-md bg-white">
+            <div class="flex justify-between items-center pb-3 border-b">
+                <h3 id="modal-title" class="text-xl font-semibold text-gray-900">Tambah Lowongan Baru</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600 text-2xl focus:outline-none">&times;</button>
             </div>
-            <div id="modalContent" class="space-y-3 text-on-surface-variant"></div>
-            <div class="flex justify-end gap-3 mt-6">
-                <button id="updateStatusBtn" class="bg-secondary-container text-on-secondary px-5 py-2 rounded-xl font-bold">Update Status</button>
-                <button id="closeModalFooterBtn" class="bg-surface-container-high px-5 py-2 rounded-xl">Tutup</button>
+            <form id="lowongan-form">
+                <input type="hidden" id="lowongan-id" value="">
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <label for="judul" class="block text-sm font-medium text-gray-700 mb-1">Judul Lowongan <span class="text-red-500">*</span></label>
+                        <input type="text" id="judul" name="judul" required class="w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500" placeholder="Contoh: Frontend Developer">
+                    </div>
+                    <div>
+                        <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Pekerjaan <span class="text-red-500">*</span></label>
+                        <textarea id="deskripsi" name="deskripsi" rows="5" required class="w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500" placeholder="Jelaskan tanggung jawab, kualifikasi, dan persyaratan lowongan..."></textarea>
+                    </div>
+                    <div>
+                        <label for="status-lowongan" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select id="status-lowongan" name="status" class="w-full border border-gray-300 rounded-md p-2">
+                            <option value="aktif">Aktif</option>
+                            <option value="nonaktif">Nonaktif</option>
+                            <option value="ditutup">Ditutup</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 mt-6 pt-3 border-t">
+                    <button type="button" id="cancel-modal" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Batal</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 focus:ring-2">Simpan Lowongan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="modal-hapus" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full z-50">
+        <div class="relative top-40 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="text-center">
+                <i class="fas fa-exclamation-triangle text-yellow-500 text-5xl mb-3"></i>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Hapus Lowongan</h3>
+                <p class="text-gray-600 mb-4">Apakah Anda yakin ingin menghapus lowongan "<span id="hapus-judul"></span>"?</p>
+                <p class="text-sm text-red-600 mb-4">Tindakan ini tidak dapat dibatalkan!</p>
+                <div class="flex justify-center space-x-3">
+                    <button id="confirm-hapus" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">Hapus</button>
+                    <button id="cancel-hapus" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400">Batal</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-surface-container-low w-full py-8 px-6 mt-12">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline">
-            <div>© 2026 KARYA. Memberdayakan Kemampuan.</div>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-primary">Pernyataan Aksesibilitas</a>
-                <a href="#" class="hover:text-primary">Kebijakan Privasi</a>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Data dummy
-        let pelamarData = [
-            { id:1, nama:"Budi Santoso", disabilitas:"Fisik (daksa)", lowongan:"Frontend Developer", tglLamaran:"2026-06-01", status:"pending", email:"budi@example.com", pendidikan:"S1 Informatika", cv:"#" },
-            { id:2, nama:"Siti Aminah", disabilitas:"Netra", lowongan:"Admin Data Entry", tglLamaran:"2026-06-03", status:"review", email:"siti@example.com", pendidikan:"D3 Administrasi", cv:"#" },
-            { id:3, nama:"Agus Prasetyo", disabilitas:"Rungu", lowongan:"Customer Service", tglLamaran:"2026-06-05", status:"interview", email:"agus@example.com", pendidikan:"S1 Psikologi", cv:"#" }
+        // Data dummy lowongan
+        let lowonganData = [
+            { id: 1, judul: "Frontend Developer", deskripsi: "Membangun antarmuka website yang responsif dan aksesibel untuk penyandang disabilitas. Kualifikasi: menguasai HTML, CSS, JavaScript, React.", status: "aktif", tanggal: "2026-06-01" },
+            { id: 2, judul: "Admin Data Entry", deskripsi: "Menginput data perusahaan ke sistem. Kualifikasi: teliti, cepat mengetik, familiar dengan Excel.", status: "aktif", tanggal: "2026-06-03" },
+            { id: 3, judul: "Customer Service", deskripsi: "Melayani pertanyaan pelanggan via chat dan email. Kualifikasi: komunikatif, sabar, memahami bahasa isyarat dasar (nilai plus).", status: "nonaktif", tanggal: "2026-05-20" },
         ];
-        let filteredData = [...pelamarData];
+
         let currentPage = 1;
         const rowsPerPage = 3;
+        let filteredData = [...lowonganData];
+        let deleteId = null;
 
+        // Format tanggal ke Indonesia
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Render tabel
         function renderTable() {
-            const start = (currentPage-1)*rowsPerPage;
-            const pageData = filteredData.slice(start, start+rowsPerPage);
-            const tbody = document.getElementById('tableBody');
-            if(pageData.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-outline">Tidak ada data</td></tr>';
-                document.getElementById('pageInfo').innerText = `Halaman 0 dari 0`;
-                document.getElementById('prevPage').disabled = true;
-                document.getElementById('nextPage').disabled = true;
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = filteredData.slice(start, end);
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+            
+            if (pageData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-500">Tidak ada data lowongan</td></tr>';
+                document.getElementById('page-info').innerText = `Halaman 0 dari 0`;
+                document.getElementById('prev-page').disabled = true;
+                document.getElementById('next-page').disabled = true;
                 return;
             }
-            tbody.innerHTML = pageData.map(p => `
-                <tr class="border-b border-surface-container-high hover:bg-surface-container-low transition">
-                    <td class="p-4 font-medium">${p.nama}</td>
-                    <td class="p-4">${p.disabilitas}</td>
-                    <td class="p-4">${p.lowongan}</td>
-                    <td class="p-4">${p.tglLamaran}</td>
-                    <td class="p-4"><span class="px-3 py-1 rounded-full text-xs font-bold ${getStatusClass(p.status)}">${p.status}</span></td>
-                    <td class="p-4 text-center"><button class="detailBtn text-primary font-bold" data-id="${p.id}">Detail</button></td>
-                </tr>
-            `).join('');
-            const totalPages = Math.ceil(filteredData.length/rowsPerPage);
-            document.getElementById('pageInfo').innerText = `Halaman ${currentPage} dari ${totalPages||1}`;
-            document.getElementById('prevPage').disabled = currentPage === 1;
-            document.getElementById('nextPage').disabled = currentPage === totalPages || filteredData.length === 0;
+
+            pageData.forEach((item, index) => {
+                let statusClass = '';
+                let statusText = '';
+                switch(item.status) {
+                    case 'aktif': statusClass = 'bg-green-100 text-green-800'; statusText = 'Aktif'; break;
+                    case 'nonaktif': statusClass = 'bg-yellow-100 text-yellow-800'; statusText = 'Nonaktif'; break;
+                    case 'ditutup': statusClass = 'bg-red-100 text-red-800'; statusText = 'Ditutup'; break;
+                    default: statusClass = 'bg-gray-100'; statusText = item.status;
+                }
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+                row.innerHTML = `
+                    <td class="py-3 px-4">${start + index + 1}</td>
+                    <td class="py-3 px-4 font-medium">${item.judul}</td>
+                    <td class="py-3 px-4 max-w-md truncate">${item.deskripsi.substring(0, 60)}${item.deskripsi.length > 60 ? '...' : ''}</td>
+                    <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs font-semibold ${statusClass}">${statusText}</span></td>
+                    <td class="py-3 px-4">${formatDate(item.tanggal)}</td>
+                    <td class="py-3 px-4 text-center">
+                        <button class="text-blue-600 hover:text-blue-800 mr-2 edit-btn" data-id="${item.id}" aria-label="Edit lowongan">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="text-red-600 hover:text-red-800 delete-btn" data-id="${item.id}" data-judul="${item.judul}" aria-label="Hapus lowongan">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+            document.getElementById('page-info').innerText = `Halaman ${currentPage} dari ${totalPages || 1}`;
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            document.getElementById('next-page').disabled = currentPage === totalPages || filteredData.length === 0;
         }
 
-        function getStatusClass(status) {
-            switch(status){
-                case 'pending': return 'bg-yellow-100 text-yellow-800';
-                case 'review': return 'bg-blue-100 text-blue-800';
-                case 'interview': return 'bg-purple-100 text-purple-800';
-                case 'accepted': return 'bg-green-100 text-green-800';
-                case 'rejected': return 'bg-red-100 text-red-800';
-                default: return 'bg-gray-100';
-            }
-        }
-
+        // Filter data
         function applyFilters() {
-            const lowongan = document.getElementById('filterLowongan').value;
-            const status = document.getElementById('filterStatus').value;
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            filteredData = pelamarData.filter(p => {
-                let matchLowongan = true;
-                if(lowongan === '1') matchLowongan = p.lowongan === 'Frontend Developer';
-                else if(lowongan === '2') matchLowongan = p.lowongan === 'Admin Data Entry';
-                else if(lowongan === '3') matchLowongan = p.lowongan === 'Customer Service';
-                let matchStatus = status ? p.status === status : true;
-                let matchSearch = search ? p.nama.toLowerCase().includes(search) || p.email.toLowerCase().includes(search) : true;
-                return matchLowongan && matchStatus && matchSearch;
+            const statusFilter = document.getElementById('filter-status').value;
+            const searchText = document.getElementById('search').value.toLowerCase();
+            filteredData = lowonganData.filter(item => {
+                let matchStatus = statusFilter ? item.status === statusFilter : true;
+                let matchSearch = searchText ? item.judul.toLowerCase().includes(searchText) : true;
+                return matchStatus && matchSearch;
             });
             currentPage = 1;
             renderTable();
         }
 
-        let currentPelamarId = null;
-        function showDetail(id) {
-            const pelamar = pelamarData.find(p => p.id == id);
-            if(!pelamar) return;
-            currentPelamarId = id;
-            const modal = document.getElementById('detailModal');
-            document.getElementById('modalContent').innerHTML = `
-                <p><strong>Nama:</strong> ${pelamar.nama}</p>
-                <p><strong>Email:</strong> ${pelamar.email}</p>
-                <p><strong>Disabilitas:</strong> ${pelamar.disabilitas}</p>
-                <p><strong>Pendidikan:</strong> ${pelamar.pendidikan}</p>
-                <p><strong>Lowongan:</strong> ${pelamar.lowongan}</p>
-                <p><strong>Tanggal Lamar:</strong> ${pelamar.tglLamaran}</p>
-                <p><strong>Status:</strong> 
-                    <select id="statusSelect" class="ml-2 p-1 rounded border border-outline-variant bg-surface">
-                        <option value="pending" ${pelamar.status==='pending'?'selected':''}>Pending</option>
-                        <option value="review" ${pelamar.status==='review'?'selected':''}>Dalam Review</option>
-                        <option value="interview" ${pelamar.status==='interview'?'selected':''}>Undang Interview</option>
-                        <option value="accepted" ${pelamar.status==='accepted'?'selected':''}>Diterima</option>
-                        <option value="rejected" ${pelamar.status==='rejected'?'selected':''}>Ditolak</option>
-                    </select>
-                </p>
-                <p><strong>CV:</strong> <a href="${pelamar.cv}" target="_blank" class="text-primary underline">Lihat CV</a></p>
-            `;
-            modal.classList.remove('hidden');
-            modal.style.display = 'flex';
+        // Reset form modal
+        function resetModalForm() {
+            document.getElementById('lowongan-id').value = '';
+            document.getElementById('judul').value = '';
+            document.getElementById('deskripsi').value = '';
+            document.getElementById('status-lowongan').value = 'aktif';
+            document.getElementById('modal-title').innerText = 'Tambah Lowongan Baru';
         }
 
-        function updateStatus() {
-            const newStatus = document.getElementById('statusSelect').value;
-            const index = pelamarData.findIndex(p => p.id == currentPelamarId);
-            if(index !== -1) {
-                pelamarData[index].status = newStatus;
-                applyFilters(); // refresh tabel
-            }
-            document.getElementById('detailModal').classList.add('hidden');
-            document.getElementById('detailModal').style.display = 'none';
+        // Buka modal tambah
+        function openAddModal() {
+            resetModalForm();
+            document.getElementById('modal-lowongan').classList.remove('hidden');
         }
 
-        // Event listeners
-        document.getElementById('applyFilterBtn').addEventListener('click', applyFilters);
-        document.getElementById('prevPage').addEventListener('click', () => { if(currentPage>1){ currentPage--; renderTable(); } });
-        document.getElementById('nextPage').addEventListener('click', () => { if(currentPage < Math.ceil(filteredData.length/rowsPerPage)){ currentPage++; renderTable(); } });
-        document.getElementById('closeModalBtn').addEventListener('click', () => {
-            document.getElementById('detailModal').classList.add('hidden');
-            document.getElementById('detailModal').style.display = 'none';
+        // Buka modal edit
+        function openEditModal(id) {
+            const lowongan = lowonganData.find(l => l.id == id);
+            if (lowongan) {
+                document.getElementById('lowongan-id').value = lowongan.id;
+                document.getElementById('judul').value = lowongan.judul;
+                document.getElementById('deskripsi').value = lowongan.deskripsi;
+                document.getElementById('status-lowongan').value = lowongan.status;
+                document.getElementById('modal-title').innerText = 'Edit Lowongan';
+                document.getElementById('modal-lowongan').classList.remove('hidden');
+            }
+        }
+
+        // Simpan lowongan (Create/Update)
+        function saveLowongan(event) {
+            event.preventDefault();
+            const id = document.getElementById('lowongan-id').value;
+            const judul = document.getElementById('judul').value;
+            const deskripsi = document.getElementById('deskripsi').value;
+            const status = document.getElementById('status-lowongan').value;
+
+            if (!judul || !deskripsi) {
+                alert('Judul dan deskripsi wajib diisi!');
+                return;
+            }
+
+            if (id) {
+                // UPDATE
+                const index = lowonganData.findIndex(l => l.id == id);
+                if (index !== -1) {
+                    lowonganData[index] = {
+                        ...lowonganData[index],
+                        judul: judul,
+                        deskripsi: deskripsi,
+                        status: status
+                    };
+                }
+            } else {
+                // CREATE
+                const newId = Math.max(...lowonganData.map(l => l.id), 0) + 1;
+                const newLowongan = {
+                    id: newId,
+                    judul: judul,
+                    deskripsi: deskripsi,
+                    status: status,
+                    tanggal: new Date().toISOString().split('T')[0]
+                };
+                lowonganData.push(newLowongan);
+            }
+
+            document.getElementById('modal-lowongan').classList.add('hidden');
+            applyFilters();
+            resetModalForm();
+        }
+
+        // Buka modal konfirmasi hapus
+        function openDeleteModal(id, judul) {
+            deleteId = id;
+            document.getElementById('hapus-judul').innerText = judul;
+            document.getElementById('modal-hapus').classList.remove('hidden');
+        }
+
+        // Proses hapus
+        function confirmDelete() {
+            if (deleteId) {
+                lowonganData = lowonganData.filter(l => l.id != deleteId);
+                applyFilters();
+                document.getElementById('modal-hapus').classList.add('hidden');
+                deleteId = null;
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('btn-tambah').addEventListener('click', openAddModal);
+        document.getElementById('btn-filter').addEventListener('click', applyFilters);
+        document.getElementById('search').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') applyFilters();
         });
-        document.getElementById('closeModalFooterBtn').addEventListener('click', () => {
-            document.getElementById('detailModal').classList.add('hidden');
-            document.getElementById('detailModal').style.display = 'none';
-        });
-        document.getElementById('updateStatusBtn').addEventListener('click', updateStatus);
-        document.getElementById('tableBody').addEventListener('click', (e) => {
-            if(e.target.classList.contains('detailBtn')) {
-                showDetail(e.target.getAttribute('data-id'));
+        document.getElementById('prev-page').addEventListener('click', () => { if(currentPage > 1) { currentPage--; renderTable(); } });
+        document.getElementById('next-page').addEventListener('click', () => { if(currentPage < Math.ceil(filteredData.length / rowsPerPage)) { currentPage++; renderTable(); } });
+        
+        // Modal close buttons
+        document.getElementById('close-modal').addEventListener('click', () => document.getElementById('modal-lowongan').classList.add('hidden'));
+        document.getElementById('cancel-modal').addEventListener('click', () => document.getElementById('modal-lowongan').classList.add('hidden'));
+        document.getElementById('cancel-hapus').addEventListener('click', () => document.getElementById('modal-hapus').classList.add('hidden'));
+        
+        document.getElementById('lowongan-form').addEventListener('submit', saveLowongan);
+        document.getElementById('confirm-hapus').addEventListener('click', confirmDelete);
+
+        // Delegasi untuk tombol edit dan hapus di tabel
+        document.getElementById('table-body').addEventListener('click', (e) => {
+            const target = e.target.closest('button');
+            if (!target) return;
+            if (target.classList.contains('edit-btn') || target.closest('.edit-btn')) {
+                const btn = target.classList.contains('edit-btn') ? target : target.closest('.edit-btn');
+                const id = btn.getAttribute('data-id');
+                openEditModal(id);
+            } else if (target.classList.contains('delete-btn') || target.closest('.delete-btn')) {
+                const btn = target.classList.contains('delete-btn') ? target : target.closest('.delete-btn');
+                const id = btn.getAttribute('data-id');
+                const judul = btn.getAttribute('data-judul');
+                openDeleteModal(id, judul);
             }
         });
+
+        // Inisialisasi
         applyFilters();
     </script>
 </body>
